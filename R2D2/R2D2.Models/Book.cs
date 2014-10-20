@@ -8,17 +8,16 @@
     {
         public Book()
         {
-            this.Id = Guid.NewGuid();
             this.Categories = new HashSet<Category>();
-            this.Ratings = new HashSet<Rating>();
+            this.Ratings = new HashSet<BooksRead>();
         }
 
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         public string Title { get; set; }
 
-        public DateTime DatePublished { get; set; }
+        public DateTime? DatePublished { get; set; }
 
         public string Description { get; set; }
 
@@ -32,6 +31,6 @@
 
         public virtual ICollection<Category> Categories { get; set; }
 
-        public virtual ICollection<Rating> Ratings { get; set; }
+        public virtual ICollection<BooksRead> Ratings { get; set; }
     }
 }

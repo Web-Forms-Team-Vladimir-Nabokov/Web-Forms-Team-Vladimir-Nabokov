@@ -12,7 +12,7 @@
         public ApplicationUser()
         {
             this.Books = new HashSet<Book>();
-            this.Ratings = new HashSet<Rating>();
+            this.BooksRead = new HashSet<BooksRead>();
         }
 
         public ClaimsIdentity GenerateUserIdentity(UserManager<ApplicationUser> manager)
@@ -28,8 +28,8 @@
             return Task.FromResult(GenerateUserIdentity(manager));
         }
 
-        public virtual ICollection<Book> Books { get; set; }
+        public virtual ICollection<BooksRead> BooksRead { get; set; }
 
-        public virtual ICollection<Rating> Ratings { get; set; }
+        public virtual ICollection<Book> Books { get; set; }
     }
 }

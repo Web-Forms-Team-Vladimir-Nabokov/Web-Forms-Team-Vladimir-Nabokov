@@ -9,10 +9,11 @@
 
     public class ApplicationUser : IdentityUser
     {
+        private ICollection<UsersBooks> books;
+
         public ApplicationUser()
         {
-            this.Books = new HashSet<Book>();
-            this.BooksRead = new HashSet<BooksRead>();
+            this.books = new HashSet<UsersBooks>();
         }
 
         public ClaimsIdentity GenerateUserIdentity(UserManager<ApplicationUser> manager)
@@ -28,8 +29,17 @@
             return Task.FromResult(GenerateUserIdentity(manager));
         }
 
-        public virtual ICollection<BooksRead> BooksRead { get; set; }
-
-        public virtual ICollection<Book> Books { get; set; }
+        public virtual ICollection<UsersBooks> Books 
+        {
+            get
+            {
+                return this.books;
+            }
+            
+            set
+            {
+                this.books = value;
+            }
+        }
     }
 }

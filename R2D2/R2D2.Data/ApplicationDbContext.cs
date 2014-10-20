@@ -22,6 +22,6 @@
 
         public IDbSet<Book> Books { get; set; }
 
-        public IDbSet<BooksRead> Ratings { get; set; }
+        public IDbSet<UsersBooks> UsersBooks { get; set; }
     }
 }

@@ -9,7 +9,7 @@
 
         IRepository<Book> Books { get; }
 
-        IRepository<BooksRead> Ratings { get; }
+        IRepository<UsersBooks> UsersBooks { get; }
 
         int SaveChanges();
     }

@@ -6,13 +6,17 @@
 
     public class Book
     {
+        private ICollection<Category> categories;
+        private ICollection<UsersBooks> users;
+
         public Book()
         {
-            this.Categories = new HashSet<Category>();
-            this.Ratings = new HashSet<BooksRead>();
+            this.Id = Guid.NewGuid();
+            this.categories = new HashSet<Category>();
+            this.users = new HashSet<UsersBooks>();
         }
 
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         public string Title { get; set; }
@@ -29,8 +33,30 @@
 
         public string BookUrl { get; set; }
 
-        public virtual ICollection<Category> Categories { get; set; }
+        public virtual ICollection<Category> Categories 
+        { 
+            get
+            {
+                return this.categories;
+            }
+            
+            set
+            {
+                this.categories = value;
+            }
+        }
 
-        public virtual ICollection<BooksRead> Ratings { get; set; }
+        public virtual ICollection<UsersBooks> Users 
+        {
+            get
+            {
+                return this.users;
+            }
+
+            set
+            {
+                this.users = value;
+            }
+        }
     }
 }

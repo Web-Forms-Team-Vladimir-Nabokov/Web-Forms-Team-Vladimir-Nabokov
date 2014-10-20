@@ -28,9 +28,9 @@
             get { return this.GetRepository<Book>(); }
         }
 
-        public IRepository<BooksRead> Ratings
+        public IRepository<UsersBooks> UsersBooks
         {
-            get { return this.GetRepository<BooksRead>(); }
+            get { return this.GetRepository<UsersBooks>(); }
         }
 
         public int SaveChanges()

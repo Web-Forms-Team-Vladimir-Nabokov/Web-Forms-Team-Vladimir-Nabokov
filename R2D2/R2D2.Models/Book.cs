@@ -33,6 +33,10 @@
 
         public string BookUrl { get; set; }
 
+        public double RatingCount { get; set; }
+
+        public double RatingSum { get; set; }
+
         public virtual ICollection<Category> Categories 
         { 
             get

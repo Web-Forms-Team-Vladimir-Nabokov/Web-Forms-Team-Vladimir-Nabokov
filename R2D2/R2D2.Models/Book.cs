@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public class Book
     {
@@ -21,7 +22,7 @@
         [Required]
         public string Title { get; set; }
 
-        public DateTime? DatePublished { get; set; }
+        public DateTime DatePublished { get; set; }
 
         public string Description { get; set; }
 
@@ -37,20 +38,22 @@
 
         public double RatingSum { get; set; }
 
-        public virtual ICollection<Category> Categories 
-        { 
+        public double Rating { get; set; }
+
+        public virtual ICollection<Category> Categories
+        {
             get
             {
                 return this.categories;
             }
-            
+
             set
             {
                 this.categories = value;
             }
         }
 
-        public virtual ICollection<UsersBooks> Users 
+        public virtual ICollection<UsersBooks> Users
         {
             get
             {
@@ -61,6 +64,11 @@
             {
                 this.users = value;
             }
+        }
+
+        public void SetRating()
+        {
+            this.Rating = this.RatingSum / this.RatingCount;
         }
     }
 }

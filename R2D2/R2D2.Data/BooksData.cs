@@ -12,6 +12,11 @@
         private DbContext context;
         private IDictionary<Type, object> repositories;
 
+        public BooksData()
+            : this(new ApplicationDbContext())
+        {
+        }
+
         public BooksData(DbContext context)
         {
             this.context = context;

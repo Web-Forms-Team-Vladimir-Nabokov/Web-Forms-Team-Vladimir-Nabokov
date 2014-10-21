@@ -6,14 +6,51 @@
     using System.Text;
     using System.Threading.Tasks;
     using eBdb.EpubReader;
+    using System.IO;
 
     public class Logic
     {
-        private ICollection<string> SaveExternalFiles(Epub epub, string directory)
+        private IEnumerable<string> SaveExternalFiles(Epub epub, string directory)
         {
             //TODO: make this put all external files outside and return a list of their strings
+            var pathCollection = new HashSet<string>();
+            var keys = epub.ExtendedData.Keys;
+
+            foreach (var key in keys)
+            {
+                var data = epub.ExtendedData[key] as ExtendedData;
+                var keyAsString = key as string;
+                if (keyAsString == null)
+                {
+                    continue;
+                }
+
+                var currentFilePath = directory + "/" + key;
+                FileInfo file = new System.IO.FileInfo(currentFilePath);
+                file.Directory.Create();
+
+                if (data.IsText)
+                {
+                    File.WriteAllText(currentFilePath, data.Content);
+                }
+                else
+                {
+                    var byteArr = Convert.FromBase64String(data.Content);
+                    File.WriteAllBytes(currentFilePath, byteArr);
+                    pathCollection.Add(currentFilePath);
+                }
+            }
+            
             return new List<string>();
         }
+
+        private byte[] GetBytes(string str)
+        {
+            byte[] bytes = new byte[str.Length * sizeof(char)];
+            System.Buffer.BlockCopy(str.ToCharArray(), 0, bytes, 0, bytes.Length);
+            return bytes;
+        }
+
 
         public EpubBook GetEpubModel(string directory, string filePath)
         {
@@ -55,7 +92,7 @@
 
             foreach (var link in links)
             {
-                if (link.ToLowerInvariant().Contains("cover"))
+                if (link.ToLowerInvariant().Contains("cover."))
                 {
                     coverUrl = link;
                     break;

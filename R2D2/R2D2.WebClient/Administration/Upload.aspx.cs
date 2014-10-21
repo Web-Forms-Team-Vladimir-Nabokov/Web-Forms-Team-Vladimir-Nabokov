@@ -76,15 +76,15 @@ namespace R2D2.WebClient.Administration
 
             var logic = new Logic();
             EpubBook epubBook;
-            try
+            //try
             {
                 epubBook = logic.GetEpubModel(finalDirectory, filePath);
             }
-            catch (Exception)
-            {
-                StatusLabel.Text = "Error reading epub file.";
-                return;
-            }
+            //catch (Exception)
+            //{
+            //    StatusLabel.Text = "Error reading epub file.";
+            //    return;
+            //}
 
             var book = new Book()
             {

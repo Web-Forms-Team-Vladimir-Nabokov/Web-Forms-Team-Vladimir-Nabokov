@@ -1,4 +1,6 @@
-﻿using System;
+﻿using R2D2.Data;
+using R2D2.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,9 +11,33 @@ namespace R2D2.WebClient.Public
 {
     public partial class Books : System.Web.UI.Page
     {
+        private const int DefaultPageSize = 10;
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+        public IQueryable<Book> gvListAllBooks_GetData()
+        {
+            var dataBase = new BooksData();
+            var bestReadings = dataBase.Books
+                .All()
+                .OrderByDescending(b => b.Rating)
+                .ThenBy(b => b.Title)
+                .Take(DefaultPageSize);
+
+            return bestReadings;
+        }
+
+        public IQueryable<Category> gvListAllCategories_GetData()
+        {
+            List<Category> allCategories = new List<Category>();
+
+            foreach (Category category in (Category[])Enum.GetValues(typeof(Category)))
+            {
+                allCategories.Add(category);
+            }
+
+            return allCategories.AsQueryable();
         }
     }
 }

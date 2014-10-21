@@ -9,6 +9,8 @@
 
         IRepository<Book> Books { get; }
 
+        IRepository<Category> Categories { get; }
+
         IRepository<UsersBooks> UsersBooks { get; }
 
         int SaveChanges();

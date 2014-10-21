@@ -375,6 +375,10 @@
       <Project>{07950b37-ef83-4741-b854-e86de70ebe1c}</Project>
       <Name>R2D2.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\R2D2.Epub\R2D2.Epub.csproj">
+      <Project>{8b4c7d6c-682c-4523-998f-a234ff7da2b9}</Project>
+      <Name>R2D2.Epub</Name>
+    </ProjectReference>
     <ProjectReference Include="..\R2D2.Models\R2D2.Models.csproj">
       <Project>{6bb98511-f2a8-42f5-aa8e-489c30727b88}</Project>
       <Name>R2D2.Models</Name>

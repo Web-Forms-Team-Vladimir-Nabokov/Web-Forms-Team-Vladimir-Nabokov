@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "R2D2.Models", "R2D2.Models\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "R2D2.WebClient", "R2D2.WebClient\R2D2.WebClient.csproj", "{CBBB82E8-4FDE-4AD8-8F06-1579F6A39D13}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "R2D2.Epub", "R2D2.Epub\R2D2.Epub.csproj", "{8B4C7D6C-682C-4523-998F-A234FF7DA2B9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{CBBB82E8-4FDE-4AD8-8F06-1579F6A39D13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBBB82E8-4FDE-4AD8-8F06-1579F6A39D13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBBB82E8-4FDE-4AD8-8F06-1579F6A39D13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B4C7D6C-682C-4523-998F-A234FF7DA2B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B4C7D6C-682C-4523-998F-A234FF7DA2B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B4C7D6C-682C-4523-998F-A234FF7DA2B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B4C7D6C-682C-4523-998F-A234FF7DA2B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

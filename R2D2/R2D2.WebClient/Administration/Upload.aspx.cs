@@ -1,4 +1,6 @@
-﻿using System;
+﻿using R2D2.Epub;
+using R2D2.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -16,13 +18,70 @@ namespace R2D2.WebClient.Administration
         }
         protected void UploadButton_Click(object sender, EventArgs e)
         {
+            StatusLabel.Text = "";
             if (FileUploadControl.HasFile)
             {
                 string filename = Path.GetFileName(FileUploadControl.FileName);
-                FileUploadControl.SaveAs(Server.MapPath("~/Books/") + filename);
+                var fileType = filename.Substring(filename.LastIndexOf('.'));
+
+                if (fileType.ToLowerInvariant() != ".epub")
+                {
+                    StatusLabel.Text = "File must be epub format";
+                    return;
+                }
+                var currentDateFolder = GetCurrentDateDirectoryName();
+                var directory = Server.MapPath("~/Books/" + currentDateFolder);
+                if (Directory.Exists(directory))
+                {
+                    if (Directory.Exists(directory + "/" + filename))
+                    {
+                        // TODO: Add error to UI
+
+                        StatusLabel.Text = "Upload status: File upload failed, file with this name already exists!";
+                        return;
+                    }
+                    else
+                    {
+                        Directory.CreateDirectory(directory + "/" + filename);
+                    }
+                }
+                else
+                {
+                    Directory.CreateDirectory(directory);
+                    Directory.CreateDirectory(directory + "/" + filename);
+                }
+
+                FileUploadControl.SaveAs(directory + "/" + filename + "/" + filename);
+
+                var finalDirectory = directory + "/" + filename;
+                var filePath = directory + "/" + filename + "/" + filename;
+
+                var logic = new Logic();
+                EpubBook epubBook;
+                try
+                {
+                    epubBook = logic.GetEpubModel(finalDirectory, filePath);
+                }
+                catch (Exception)
+                {
+                    StatusLabel.Text = "Error reading epub file.";
+                    return;
+                }
+
+                var book = new Book()
+                {
+                    
+                };
+
+
                 StatusLabel.Text = "Upload status: File uploaded!";
             }
         }
 
+        
+        private string GetCurrentDateDirectoryName()
+        {
+            return DateTime.Now.Day.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Year.ToString();
+        }
     }
 }

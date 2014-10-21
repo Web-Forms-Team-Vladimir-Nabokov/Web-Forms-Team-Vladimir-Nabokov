@@ -5,6 +5,7 @@ using System.Security.Principal;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace R2D2.WebClient
@@ -68,12 +69,24 @@ namespace R2D2.WebClient
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (string.IsNullOrWhiteSpace(this.errorMsg.InnerText))
+            {
+                this.error.Visible = false;
+            }
+            else
+            {
+                this.error.Visible = true;
+            }
         }
 
         protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)
         {
             Context.GetOwinContext().Authentication.SignOut();
+        }
+
+        public void SetErrorMessage(string errorMsg)
+        {
+            this.errorMsg.InnerText = errorMsg;
         }
     }
 

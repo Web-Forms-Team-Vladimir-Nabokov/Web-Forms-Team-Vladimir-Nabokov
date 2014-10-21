@@ -36,3 +36,7 @@ input[type="select"] {
         padding: 0;
     }
 }
+
+.jumbotron img {
+    max-height: 150px;
+}

@@ -9,22 +9,14 @@
                 </div>
                 <div class="panel-body">
                     <ul class="list-group">
-                      <li class="list-group-item">
-                        <span class="badge">143</span>
-                          <a href="#">All Books</a>
-                      </li>
-                      <li class="list-group-item">
-                        <span class="badge">4</span>
-                          <a href="#">Fantasy</a>
-                      </li>
-                      <li class="list-group-item">
-                        <span class="badge">2</span>
-                          <a href="#">Sci-Fi</a>
-                      </li>
-                      <li class="list-group-item">
-                        <span class="badge">11</span>
-                          <a href="#">Criminal</a>
-                      </li>
+                    <asp:Repeater ID="RepeaterCategories" runat="server" ItemType="R2D2.Models.Category" SelectMethod="gvListAllCategories_GetData">
+                        <ItemTemplate>
+                            <li class="list-group-item">
+                            <%--<span class="badge">11</span>--%>
+                                <a runat="server" class="btn btn-info" style="margin: 0px; width: 100%; height: 100%;" href='<%#: "Books.aspx?category="+ Item %>'><%#: Item %></a>
+                            </li>
+                        </ItemTemplate>
+                    </asp:Repeater>
                     </ul>
                 </div>
             </div>

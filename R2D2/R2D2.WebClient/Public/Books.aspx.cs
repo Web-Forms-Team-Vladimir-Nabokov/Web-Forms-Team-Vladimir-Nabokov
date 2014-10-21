@@ -27,5 +27,17 @@ namespace R2D2.WebClient.Public
 
             return bestReadings;
         }
+
+        public IQueryable<Category> gvListAllCategories_GetData()
+        {
+            List<Category> allCategories = new List<Category>();
+
+            foreach (Category category in (Category[])Enum.GetValues(typeof(Category)))
+            {
+                allCategories.Add(category);
+            }
+
+            return allCategories.AsQueryable();
+        }
     }
 }

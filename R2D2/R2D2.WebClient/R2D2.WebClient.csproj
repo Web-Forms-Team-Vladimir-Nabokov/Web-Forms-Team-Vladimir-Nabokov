@@ -160,6 +160,7 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
+    <Content Include="Administration\Upload.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
@@ -170,6 +171,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Account\Web.config" />
+    <Content Include="Administration\Admin.master" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Public\Books.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -322,6 +324,20 @@
     <Compile Include="Account\VerifyPhoneNumber.aspx.designer.cs">
       <DependentUpon>VerifyPhoneNumber.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Administration\Admin.master.cs">
+      <DependentUpon>Admin.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\Admin.master.designer.cs">
+      <DependentUpon>Admin.master</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\Upload.aspx.cs">
+      <DependentUpon>Upload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\Upload.aspx.designer.cs">
+      <DependentUpon>Upload.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -365,7 +381,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Administration\" />
     <Folder Include="Books\" />
     <Folder Include="Private\" />
   </ItemGroup>

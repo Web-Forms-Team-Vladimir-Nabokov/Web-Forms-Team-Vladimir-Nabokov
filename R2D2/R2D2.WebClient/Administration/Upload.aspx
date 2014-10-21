@@ -6,7 +6,7 @@
             <asp:Button runat="server" ID="UploadButton" Text="Upload" OnClick="UploadButton_Click" />
             <br />
             <br />
-            <asp:Label runat="server" ID="StatusLabel" Text="Upload status: " />
+            <asp:Label runat="server" ID="StatusLabel" Text="" />
         <h1>here</h1>
     </div>
 </asp:Content>

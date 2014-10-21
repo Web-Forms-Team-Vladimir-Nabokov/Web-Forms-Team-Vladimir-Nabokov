@@ -21,6 +21,7 @@
         }
 
         public IDbSet<Book> Books { get; set; }
+        public IDbSet<Category> Categories { get; set; }
 
         public IDbSet<UsersBooks> UsersBooks { get; set; }
     }

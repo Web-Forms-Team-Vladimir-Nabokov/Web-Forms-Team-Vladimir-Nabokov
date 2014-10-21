@@ -13,7 +13,7 @@
                         <ItemTemplate>
                             <li class="list-group-item">
                             <%--<span class="badge">11</span>--%>
-                                <a runat="server" class="btn btn-info" style="margin: 0px; width: 100%; height: 100%;" href='<%#: "Books.aspx?category="+ Item %>'><%#: Item %></a>
+                                <a runat="server" class="btn btn-info" style="margin: 0px; width: 100%; height: 100%;" href='<%#: "Books.aspx?category="+ Item.Name %>'><%#: Item.Name %></a>
                             </li>
                         </ItemTemplate>
                     </asp:Repeater>

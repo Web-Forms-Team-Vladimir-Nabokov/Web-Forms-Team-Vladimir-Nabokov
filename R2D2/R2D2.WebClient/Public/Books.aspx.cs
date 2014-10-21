@@ -30,14 +30,11 @@ namespace R2D2.WebClient.Public
 
         public IQueryable<Category> gvListAllCategories_GetData()
         {
-            List<Category> allCategories = new List<Category>();
+            var dataBase = new BooksData();
+            var allCategories = dataBase.Categories
+                .All();
 
-            foreach (Category category in (Category[])Enum.GetValues(typeof(Category)))
-            {
-                allCategories.Add(category);
-            }
-
-            return allCategories.AsQueryable();
+            return allCategories;
         }
     }
 }

@@ -33,6 +33,11 @@
             get { return this.GetRepository<Book>(); }
         }
 
+        public IRepository<Category> Categories
+        {
+            get { return this.GetRepository<Category>(); }
+        }
+
         public IRepository<UsersBooks> UsersBooks
         {
             get { return this.GetRepository<UsersBooks>(); }

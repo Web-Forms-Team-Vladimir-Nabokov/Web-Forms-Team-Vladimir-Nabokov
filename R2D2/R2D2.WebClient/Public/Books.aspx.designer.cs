@@ -22,12 +22,12 @@ namespace R2D2.WebClient.Public {
         protected global::System.Web.UI.WebControls.Repeater RepeaterCategories;
         
         /// <summary>
-        /// gvBestReadings control.
+        /// BooksRepeater control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvBestReadings;
+        protected global::System.Web.UI.WebControls.Repeater BooksRepeater;
     }
 }

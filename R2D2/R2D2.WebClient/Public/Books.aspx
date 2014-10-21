@@ -22,12 +22,31 @@
             </div>
         </div>
         <div class="col-md-9">
-            <div class="panel panel-info">
+            <div class="panel-info">
                 <div class="panel-heading">
                     <h3 class="panel-title">Category: Fantasy</h3>
                 </div>
                 <div class="panel-body">
-                    <asp:GridView ID="gvBestReadings" runat="server"
+                    <asp:Repeater ID="BooksRepeater" runat="server" ItemType="R2D2.Models.Book" SelectMethod="gvListAllBooks_GetData">
+                        <ItemTemplate>
+                            <div class="col-md-4">
+                                <div class="panel panel-warning">
+                                  <div class="panel-heading">
+                                    <h3 class="panel-title"><a href="#"><%#: Item.Title %></a></h3>
+                                  </div>
+                                  <div class="panel-body">
+                                      <img class="book-thumbnail" src="#" alt="<%#: Item.Title %>" />
+                                    <hr />
+                                    <strong>Author:</strong> <%#: Item.Author %><br />
+                                    <strong>Date:</strong> <%#: Item.DatePublished.ToString("MMMM dd, yyyy") %><br />
+                                      <%-- For the rating just write simple for loop for the rating count --%>
+                                    <strong>Rating:</strong> <img src="../Imgs/rating-star-full.png" alt="" /><img src="../Imgs/rating-star-full.png" alt="" /><img src="../Imgs/rating-star-full.png" alt="" /><img src="../Imgs/rating-star-full.png" alt="" />
+                                  </div>
+                                </div>
+                            </div>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                    <%--<asp:GridView ID="gvBestReadings" runat="server"
                         ItemType="R2D2.Models.Book"
                         SelectMethod="gvListAllBooks_GetData"
                         CssClass="table table-striped table-hover table-bordered table-condensed"
@@ -57,7 +76,7 @@
                             <p class="text-center">List is empty.</p>
                         </EmptyDataTemplate>
                         <HeaderStyle CssClass="info" />
-                    </asp:GridView>
+                    </asp:GridView>--%>
                 </div>
             </div>
         </div>

@@ -27,3 +27,8 @@ input[type="select"] {
 .jumbotron img {
     max-height: 150px;
 }
+
+.book-thumbnail {
+    width: 210px;
+    background: lightgray;
+}

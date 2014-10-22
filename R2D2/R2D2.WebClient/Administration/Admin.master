@@ -1,0 +1,6 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="R2D2.WebClient.Administration.Admin" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <asp:ContentPlaceHolder ID="AdminContent" runat="server">
+
+    </asp:ContentPlaceHolder>
+</asp:Content>

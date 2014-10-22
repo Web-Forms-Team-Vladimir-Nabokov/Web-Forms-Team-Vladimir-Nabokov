@@ -182,3 +182,4 @@ UpgradeLog*.htm
 # Microsoft Fakes
 FakesAssemblies/
 /R2D2/R2D2.WebClient/Web.config
+/R2D2/R2D2.WebClient/Books/*

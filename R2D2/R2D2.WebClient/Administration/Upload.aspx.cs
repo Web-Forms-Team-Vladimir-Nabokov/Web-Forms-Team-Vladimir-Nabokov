@@ -86,11 +86,12 @@ namespace R2D2.WebClient.Administration
             //    return;
             //}
 
+            var serverDirectory = "~/Books/" + currentDateFolder + "/" + filename;
             var book = new Book()
             {
                 Author = epubBook.Author,
-                BookUrl = filePath,
-                CoverUrl = epubBook.CoverUrl,
+                BookUrl = serverDirectory + "/" + filename,
+                CoverUrl =  serverDirectory + "/" + epubBook.CoverUrl,
                 DatePublished = epubBook.DatePublished,
                 Description = epubBook.Description,
                 Language = epubBook.Language,

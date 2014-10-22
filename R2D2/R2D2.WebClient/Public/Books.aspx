@@ -35,7 +35,7 @@
                                     <h3 class="panel-title"><a href="#"><%#: Item.Title %></a></h3>
                                   </div>
                                   <div class="panel-body">
-                                      <img class="book-thumbnail" src="#" alt="<%#: Item.Title %>" />
+                                      <img class="book-thumbnail" src="<%# Item.CoverUrl %>" id="coverUrl" runat="server" alt="<%#: Item.Title %>" />
                                     <hr />
                                     <strong>Author:</strong> <%#: Item.Author %><br />
                                     <strong>Date:</strong> <%#: Item.DatePublished.ToString("MMMM dd, yyyy") %><br />

@@ -38,7 +38,7 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <div class="navbar navbar-default">
+        <div class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -66,9 +66,20 @@
                         </AnonymousTemplate>
                         <LoggedInTemplate>
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %> !</a></li>
-                                <li>
-                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello, <%: Context.User.Identity.GetUserName()  %>! <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a runat="server" href="~/Private/MyBooks.aspx">My books</a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <a runat="server" href="~/Account/Manage">Settings</a>
+                                        </li>
+                                        <li>
+                                            <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                                        </li>
+                                    </ul>
                                 </li>
                             </ul>
                         </LoggedInTemplate>
@@ -93,24 +104,26 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="alert alert-dismissable alert-danger" runat="server" id="error" enableviewstate="false">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                        <p id="errorMsg" runat="server"></p>
+        <div class="splash">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert alert-dismissable alert-danger" runat="server" id="error" enableviewstate="false">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <p id="errorMsg" runat="server"></p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
-            </asp:ContentPlaceHolder>
-            <hr />
-            <footer class="text-center">
-                <p>
-                    &copy; <%: DateTime.Now.Year %> - ASP.NET WebForms Teamwork by <a href="https://github.com/Web-Forms-Team-Vladimir-Nabokov" target="_blank">Team "Vladimir Nabokov"</a>
-                </p>
-            </footer>
+                <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                </asp:ContentPlaceHolder>
+                <hr />
+                <footer class="text-center">
+                    <p>
+                        &copy; <%: DateTime.Now.Year %> - ASP.NET WebForms Teamwork by <a href="https://github.com/Web-Forms-Team-Vladimir-Nabokov" target="_blank">Team "Vladimir Nabokov"</a>
+                    </p>
+                </footer>
+            </div>
         </div>
     </form>
 </body>

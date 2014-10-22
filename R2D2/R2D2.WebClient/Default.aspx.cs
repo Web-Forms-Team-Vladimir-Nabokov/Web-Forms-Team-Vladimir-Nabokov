@@ -6,6 +6,7 @@
     using System.Web;
     using System.Web.Caching;
     using System.Web.UI;
+    using System.Web.UI.HtmlControls;
     using System.Web.UI.WebControls;
 
     using R2D2.Models;
@@ -42,6 +43,17 @@
                 .Take(DefaultPageSize);
 
             return bestReadings;
+        }
+
+        protected void Rating_PreRender(object sender, EventArgs e)
+        {
+            var labelRating = (Label)sender;
+            int rating = int.Parse(labelRating.Text);
+            for (int i = 0; i < rating; i++)
+            {
+                var spanStar = new HtmlGenericControl("span");
+                
+            }
         }
     }
 }

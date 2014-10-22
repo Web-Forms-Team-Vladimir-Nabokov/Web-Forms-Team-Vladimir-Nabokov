@@ -32,7 +32,11 @@
                             <div class="col-md-4">
                                 <div class="panel panel-warning">
                                   <div class="panel-heading">
-                                    <h3 class="panel-title"><a href="#"><%#: Item.Title %></a></h3>
+                                    <h3 class="panel-title">
+                                        <a runat="server" href='<%#: "~/Public/BookDetails.aspx?bookId=" + Item.Id %>'>
+                                            <%#: Item.Title %>
+                                        </a>
+                                    </h3>
                                   </div>
                                   <div class="panel-body">
                                       <img class="book-thumbnail" src="<%# Item.CoverUrl %>" id="coverUrl" runat="server" alt="<%#: Item.Title %>" />

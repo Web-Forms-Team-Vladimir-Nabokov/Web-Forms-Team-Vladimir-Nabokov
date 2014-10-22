@@ -32,3 +32,7 @@ input[type="select"] {
     width: 100%;
     background: lightgray;
 }
+
+.splash {
+    padding: 5em 0 2em;
+}

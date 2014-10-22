@@ -12,10 +12,11 @@ namespace R2D2.WebClient.Public
     public partial class Books : System.Web.UI.Page
     {
         private const int DefaultPageSize = 10;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
+
         public IQueryable<Book> gvListAllBooks_GetData()
         {
             var dataBase = new BooksData();

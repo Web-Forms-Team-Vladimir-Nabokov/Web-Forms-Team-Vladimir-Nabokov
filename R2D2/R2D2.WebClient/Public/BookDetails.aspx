@@ -27,6 +27,12 @@
                                 <asp:LinkButton ID="btnRead" runat="server"
                                     PostBackUrl='<%#: "~/Private/ReadBook.aspx?bookId=" + Item.Id %>'
                                     CssClass="btn btn-primary">Read</asp:LinkButton>
+                                <% if(this.User.Identity.IsAuthenticated) { %>
+                                    <asp:Button ID="btnAddToBookshelf" runat="server"
+                                        CssClass="btn btn-info"
+                                        OnClick="btnAddToBookshelf_Click"
+                                        Text="Add to my shelf" />
+                                <% } %>
                             </div>
                         </div>
                     </ItemTemplate>

@@ -22,12 +22,30 @@ namespace R2D2.WebClient.Public {
         protected global::System.Web.UI.WebControls.Repeater RepeaterCategories;
         
         /// <summary>
-        /// BooksRepeater control.
+        /// DataPager2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater BooksRepeater;
+        protected global::System.Web.UI.WebControls.DataPager DataPager2;
+        
+        /// <summary>
+        /// ListViewBooks control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView ListViewBooks;
+        
+        /// <summary>
+        /// DataPager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataPager DataPager1;
     }
 }

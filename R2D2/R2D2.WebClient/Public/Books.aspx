@@ -27,7 +27,25 @@
                     <h3 class="panel-title">Category: Fantasy</h3>
                 </div>
                 <div class="panel-body">
-                    <asp:Repeater ID="BooksRepeater" runat="server" ItemType="R2D2.Models.Book" SelectMethod="gvListAllBooks_GetData">
+                    <div class="col-md-12" style="margin-bottom: 20px;">
+                        <asp:DataPager ID="DataPager2" runat="server"
+                            PagedControlID="ListViewBooks" PageSize="3"
+                            QueryStringField="page">
+                            <Fields>
+                                <asp:NextPreviousPagerField ButtonCssClass="btn btn-info" ShowFirstPageButton="true"
+                                    ShowNextPageButton="false" ShowPreviousPageButton="false" />
+                                <asp:NumericPagerField CurrentPageLabelCssClass="btn btn-primary" NumericButtonCssClass="btn btn-info" />
+                                <asp:NextPreviousPagerField ShowLastPageButton="true"
+                                    ShowNextPageButton="false" ShowPreviousPageButton="false" ButtonCssClass="btn btn-info" />
+                            </Fields>
+                        </asp:DataPager>
+                    </div>
+                    <asp:ListView ID="ListViewBooks" runat="server"
+                        ItemType="R2D2.Models.Book" SelectMethod="gvListAllBooks_GetData">
+                        <LayoutTemplate>
+                            <asp:PlaceHolder runat="server" ID="itemPlaceholder"></asp:PlaceHolder>
+                        </LayoutTemplate>
+
                         <ItemTemplate>
                             <div class="col-md-4">
                                 <div class="panel panel-warning">
@@ -43,13 +61,28 @@
                                     <hr />
                                     <strong>Author:</strong> <%#: Item.Author %><br />
                                     <strong>Date:</strong> <%#: Item.DatePublished.ToString("MMMM dd, yyyy") %><br />
-                                      <%-- For the rating just write simple for loop for the rating count --%>
                                     <strong>Rating: </strong><asp:Label runat="server" OnPreRender="Rating_PreRender" Text="<%# Item.Rating %>"></asp:Label>
                                   </div>
                                 </div>
                             </div>
                         </ItemTemplate>
-                    </asp:Repeater>
+                    </asp:ListView>
+
+                    <%-- Paging! --%>
+                    <div class="col-md-12">
+                        <asp:DataPager ID="DataPager1" runat="server"
+                            PagedControlID="ListViewBooks" PageSize="3"
+                            QueryStringField="page">
+                            <Fields>
+                                <asp:NextPreviousPagerField ButtonCssClass="btn btn-info" ShowFirstPageButton="true"
+                                    ShowNextPageButton="false" ShowPreviousPageButton="false" />
+                                <asp:NumericPagerField CurrentPageLabelCssClass="btn btn-primary" NumericButtonCssClass="btn btn-info" />
+                                <asp:NextPreviousPagerField ShowLastPageButton="true"
+                                    ShowNextPageButton="false" ShowPreviousPageButton="false" ButtonCssClass="btn btn-info" />
+                            </Fields>
+                        </asp:DataPager>
+                    </div>
+                    <%-- Paging END --%>
                 </div>
             </div>
         </div>

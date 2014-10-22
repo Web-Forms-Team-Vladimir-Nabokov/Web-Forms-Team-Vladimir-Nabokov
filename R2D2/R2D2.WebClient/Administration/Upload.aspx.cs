@@ -14,6 +14,7 @@ namespace R2D2.WebClient.Administration
     public partial class Upload : System.Web.UI.Page
     {
         private IData data;
+        private SiteMaster master;
 
         public Upload(IData data)
         {
@@ -28,14 +29,13 @@ namespace R2D2.WebClient.Administration
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            this.master = this.Master.Master as SiteMaster;
         }
         protected void UploadButton_Click(object sender, EventArgs e)
         {
-            StatusLabel.Text = "";
             if (!FileUploadControl.HasFile)
             {
-                StatusLabel.Text = "No file was attached!";
+                this.master.SetErrorMessage("No file was attached!");
                 return;
             }
 
@@ -44,18 +44,17 @@ namespace R2D2.WebClient.Administration
 
             if (fileType.ToLowerInvariant() != ".epub")
             {
-                StatusLabel.Text = "File must be epub format";
+                this.master.SetErrorMessage("File must be epub format!");
                 return;
             }
+
             var currentDateFolder = GetCurrentDateDirectoryName();
             var directory = Server.MapPath("~/Books/" + currentDateFolder);
             if (Directory.Exists(directory))
             {
                 if (Directory.Exists(directory + "/" + filename))
                 {
-                    // TODO: Add error to UI
-
-                    StatusLabel.Text = "Upload status: File upload failed, file with this name already exists!";
+                    this.master.SetErrorMessage("Upload status: File upload failed, file with this name already exists!");
                     return;
                 }
                 else
@@ -76,15 +75,15 @@ namespace R2D2.WebClient.Administration
 
             var logic = new Logic();
             EpubBook epubBook;
-            //try
+            try
             {
                 epubBook = logic.GetEpubModel(finalDirectory, filePath);
             }
-            //catch (Exception)
-            //{
-            //    StatusLabel.Text = "Error reading epub file.";
-            //    return;
-            //}
+            catch (Exception)
+            {
+                this.master.SetErrorMessage("Error reading epub file.");
+                return;
+            }
 
             var serverDirectory = "~/Books/" + currentDateFolder + "/" + filename;
             var book = new Book()
@@ -108,11 +107,11 @@ namespace R2D2.WebClient.Administration
             }
             catch (Exception ex)
             {
-                StatusLabel.Text = "Upload status: Error saving to database!";
+                this.master.SetErrorMessage("Upload status: Error saving to database!");
                 return;
             }
 
-            StatusLabel.Text = "Upload status: File uploaded!";
+            this.master.SetInfoMessage("Upload status: File uploaded!");
         }
 
 

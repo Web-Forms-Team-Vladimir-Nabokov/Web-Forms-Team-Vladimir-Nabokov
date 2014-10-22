@@ -62,6 +62,7 @@
 
             currentUser.Books.Add(new UsersBooks { BookId = bookId });
             db.SaveChanges();
+            masterPage.SetInfoMessage("Book successfully added.");
         }
     }
 }

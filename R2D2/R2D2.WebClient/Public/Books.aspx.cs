@@ -22,13 +22,19 @@
 
         public IQueryable<Book> gvListAllBooks_GetData()
         {
+            string categoryString = Request.Params["category"];
+            if (String.IsNullOrWhiteSpace(categoryString))
+            {
+                categoryString = String.Empty;
+            }
+
             var dataBase = new BooksData();
             var bestReadings = dataBase.Books
                 .All()
+                .Where(b => b.Categories.Any(c => c.Name.Contains(categoryString)))
                 .OrderByDescending(b => b.Rating)
                 .ThenBy(b => b.Title)
                 .Take(DefaultPageSize);
-
             return bestReadings;
         }
 
@@ -43,6 +49,11 @@
 
         protected void Rating_PreRender(object sender, EventArgs e)
         {
+            if (this.IsPostBack)
+            {
+                return;
+            }
+
             var labelRating = (Label)sender;
             RatingFormatter.ConvertToStars(labelRating);
         }

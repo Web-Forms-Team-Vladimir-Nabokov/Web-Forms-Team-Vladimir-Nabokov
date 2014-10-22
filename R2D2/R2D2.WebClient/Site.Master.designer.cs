@@ -31,6 +31,24 @@ namespace R2D2.WebClient {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl errorMsg;
         
         /// <summary>
+        /// info control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl info;
+        
+        /// <summary>
+        /// infoMsg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl infoMsg;
+        
+        /// <summary>
         /// MainContent control.
         /// </summary>
         /// <remarks>

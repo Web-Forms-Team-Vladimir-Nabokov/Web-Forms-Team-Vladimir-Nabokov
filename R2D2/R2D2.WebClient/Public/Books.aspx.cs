@@ -49,8 +49,45 @@
 
         protected void Rating_PreRender(object sender, EventArgs e)
         {
+            if (this.IsPostBack)
+            {
+                return;
+            }
             var labelRating = (Label)sender;
             RatingFormatter.ConvertToStars(labelRating);
+        }
+
+        protected void SortButton_Click(object sender, EventArgs e)
+        {
+
+            // Create the sort expression from the values selected 
+            // by the user from the DropDownList controls. Multiple
+            // columns can be sorted by creating a sort expression
+            // that contains a comma-separated list of field names.
+            String expression = ddSortCriteria.SelectedValue;
+
+            // Determine the sort direction of the second column.
+            // The sort direction parameter applies only to the 
+            // last column sorted.
+            SortDirection direction2 = SortDirection.Ascending;
+            if (ddSortDirection.SelectedValue == "DESC")
+            {
+                direction2 = SortDirection.Descending;
+            }
+            else
+            {
+                direction2 = SortDirection.Ascending;
+            }
+                
+
+            // Use the Sort method to programmatically sort the ListView
+            // control using the sort expression and direction.
+            ListViewBooks.Sort(expression, direction2);
+        }
+
+        protected void searchBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

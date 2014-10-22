@@ -31,6 +31,33 @@ namespace R2D2.WebClient.Public {
         protected global::System.Web.UI.WebControls.DataPager DataPager2;
         
         /// <summary>
+        /// ddSortCriteria control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddSortCriteria;
+        
+        /// <summary>
+        /// ddSortDirection control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddSortDirection;
+        
+        /// <summary>
+        /// SortButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button SortButton;
+        
+        /// <summary>
         /// ListViewBooks control.
         /// </summary>
         /// <remarks>

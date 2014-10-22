@@ -80,6 +80,11 @@ namespace R2D2.WebClient
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            CacheBooksInfo();
+        }
+
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
             if (string.IsNullOrWhiteSpace(this.errorMsg.InnerText))
             {
                 this.error.Visible = false;
@@ -88,8 +93,6 @@ namespace R2D2.WebClient
             {
                 this.error.Visible = true;
             }
-
-            CacheBooksInfo();
         }
 
         protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)

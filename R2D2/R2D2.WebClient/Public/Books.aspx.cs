@@ -1,15 +1,18 @@
-﻿using R2D2.Data;
-using R2D2.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-
-namespace R2D2.WebClient.Public
+﻿namespace R2D2.WebClient.Public
 {
-    public partial class Books : System.Web.UI.Page
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+    using System.Web.UI;
+    using System.Web.UI.HtmlControls;
+    using System.Web.UI.WebControls;
+
+    using R2D2.Data;
+    using R2D2.Models;
+    using R2D2.WebClient.Helpers;
+
+    public partial class Books : Page
     {
         private const int DefaultPageSize = 10;
 
@@ -36,6 +39,12 @@ namespace R2D2.WebClient.Public
                 .All();
 
             return allCategories;
+        }
+
+        protected void Rating_PreRender(object sender, EventArgs e)
+        {
+            var labelRating = (Label)sender;
+            RatingFormatter.ConvertToStars(labelRating);
         }
     }
 }

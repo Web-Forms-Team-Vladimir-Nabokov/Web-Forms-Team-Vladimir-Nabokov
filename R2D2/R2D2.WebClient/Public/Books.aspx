@@ -44,43 +44,12 @@
                                     <strong>Author:</strong> <%#: Item.Author %><br />
                                     <strong>Date:</strong> <%#: Item.DatePublished.ToString("MMMM dd, yyyy") %><br />
                                       <%-- For the rating just write simple for loop for the rating count --%>
-                                    <strong>Rating:</strong> <img src="../Imgs/rating-star-full.png" alt="" /><img src="../Imgs/rating-star-full.png" alt="" /><img src="../Imgs/rating-star-full.png" alt="" /><img src="../Imgs/rating-star-full.png" alt="" />
+                                    <strong>Rating: </strong><asp:Label runat="server" OnPreRender="Rating_PreRender" Text="<%# Item.Rating %>"></asp:Label>
                                   </div>
                                 </div>
                             </div>
                         </ItemTemplate>
                     </asp:Repeater>
-                    <%--<asp:GridView ID="gvBestReadings" runat="server"
-                        ItemType="R2D2.Models.Book"
-                        SelectMethod="gvListAllBooks_GetData"
-                        CssClass="table table-striped table-hover table-bordered table-condensed"
-                        AllowSorting="true"
-                        AutoGenerateColumns="false">
-                        <Columns>
-                            <asp:TemplateField HeaderText="Title" SortExpression="Title">
-                                <ItemTemplate>
-                                    <a runat="server" href='<%#: "BookDetails.aspx?id="+ Item.Id %>'><%#: Item.Title %></a>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Author" SortExpression="Author">
-                                <ItemTemplate><%#: Item.Author %></ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Language" SortExpression="Language">
-                                <ItemTemplate><%#: Item.Language %></ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Published on" SortExpression="DatePublished">
-                                <ItemTemplate><%#: Item.DatePublished.ToShortDateString() %></ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Rating" SortExpression="Rating">
-                                <ItemTemplate><%# Item.Rating %></ItemTemplate>
-                            </asp:TemplateField>
-                        </Columns>
-
-                        <EmptyDataTemplate>
-                            <p class="text-center">List is empty.</p>
-                        </EmptyDataTemplate>
-                        <HeaderStyle CssClass="info" />
-                    </asp:GridView>--%>
                 </div>
             </div>
         </div>

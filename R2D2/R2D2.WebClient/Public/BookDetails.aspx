@@ -19,7 +19,8 @@
                             <div class="col-md-6">
                                 <p>Published on: <%#: Item.DatePublished.ToShortDateString() %></p>
                                 <p>Language: <%#: Item.Language %></p>
-                                <p>Rating: <%# Item.Rating %></p>
+                                <p>Rating: <asp:Label runat="server" OnPreRender="Rating_PreRender" Text="<%# Item.Rating %>"></asp:Label>
+                                </p>
                                 <p>
                                     <strong><%#: string.IsNullOrWhiteSpace(Item.Description) ? "No description" : Item.Description %></strong>
                                 </p>

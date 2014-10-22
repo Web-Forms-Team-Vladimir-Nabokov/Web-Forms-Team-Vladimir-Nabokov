@@ -166,7 +166,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Imgs\knowledge.png" />
-    <Content Include="Imgs\rating-star-full.png" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -371,6 +370,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\IdentityHelper.cs" />
+    <Compile Include="Helpers\RatingFormatter.cs" />
     <Compile Include="Private\MyBooks.aspx.cs">
       <DependentUpon>MyBooks.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

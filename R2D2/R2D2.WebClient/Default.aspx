@@ -44,7 +44,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Rating">
                                 <ItemTemplate>
-                                    <asp:Label runat="server" OnPreRender="Rating_PreRender" Text="<%#: Item.Rating %>"></asp:Label>
+                                    <asp:Label runat="server" OnPreRender="Rating_PreRender" Text="<%# Item.Rating %>"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
@@ -84,7 +84,9 @@
                                 <ItemTemplate><%#: Item.DatePublished.ToShortDateString() %></ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Rating">
-                                <ItemTemplate><%# Item.Rating %></ItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label runat="server" OnPreRender="Rating_PreRender" Text="<%# Item.Rating %>"></asp:Label>
+                                </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
 

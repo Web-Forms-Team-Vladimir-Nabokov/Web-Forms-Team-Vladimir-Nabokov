@@ -10,6 +10,7 @@
 
     using R2D2.Models;
     using R2D2.Data;
+    using R2D2.WebClient.Helpers;
 
     public partial class _Default : Page
     {
@@ -47,12 +48,7 @@
         protected void Rating_PreRender(object sender, EventArgs e)
         {
             var labelRating = (Label)sender;
-            int rating = int.Parse(labelRating.Text);
-            for (int i = 0; i < rating; i++)
-            {
-                var spanStar = new HtmlGenericControl("span");
-                
-            }
+            RatingFormatter.ConvertToStars(labelRating);
         }
     }
 }

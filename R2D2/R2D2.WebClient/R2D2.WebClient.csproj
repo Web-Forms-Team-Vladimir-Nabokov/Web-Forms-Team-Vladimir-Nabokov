@@ -166,13 +166,31 @@
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Imgs\knowledge.png" />
+    <Content Include="Imgs\rating-star-full.png" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Account\Web.config" />
     <Content Include="Administration\Admin.master" />
+    <Content Include="Private\ReadBook.aspx" />
+    <Content Include="Private\Web.config" />
+    <Content Include="Administration\Web.config" />
+    <None Include="Administration\Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Administration\Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Private\Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Private\Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Private\MyBooks.aspx" />
+    <Content Include="Public\BookDetails.aspx" />
     <Content Include="Public\Books.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -352,8 +370,29 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\IdentityHelper.cs" />
+    <Compile Include="Helpers\IdentityHelper.cs" />
+    <Compile Include="Private\MyBooks.aspx.cs">
+      <DependentUpon>MyBooks.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Private\MyBooks.aspx.designer.cs">
+      <DependentUpon>MyBooks.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Private\ReadBook.aspx.cs">
+      <DependentUpon>ReadBook.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Private\ReadBook.aspx.designer.cs">
+      <DependentUpon>ReadBook.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Public\BookDetails.aspx.cs">
+      <DependentUpon>BookDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Public\BookDetails.aspx.designer.cs">
+      <DependentUpon>BookDetails.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Public\Books.aspx.cs">
       <DependentUpon>Books.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -386,7 +425,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Books\" />
-    <Folder Include="Private\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

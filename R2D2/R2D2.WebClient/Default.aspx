@@ -30,7 +30,7 @@
                         <Columns>
                             <asp:TemplateField HeaderText="Title">
                                 <ItemTemplate>
-                                    <a runat="server" href='<%#: "BookDetails.aspx?id="+ Item.Id %>'><%#: Item.Title %></a>
+                                    <a runat="server" href='<%#: "~/Public/BookDetails.aspx?bookId=" + Item.Id %>'><%#: Item.Title %></a>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Author">
@@ -69,7 +69,7 @@
                         <Columns>
                             <asp:TemplateField HeaderText="Title">
                                 <ItemTemplate>
-                                    <a runat="server" href="#"><%#: Item.Title %></a>
+                                    <a runat="server" href='<%#: "~/Public/BookDetails.aspx?bookId=" + Item.Id %>'><%#: Item.Title %></a>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Author">

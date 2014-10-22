@@ -89,7 +89,37 @@ namespace R2D2.WebClient
                 this.error.Visible = true;
             }
 
+            if (string.IsNullOrWhiteSpace(this.infoMsg.InnerText))
+            {
+                this.info.Visible = false;
+            }
+            else
+            {
+                this.info.Visible = true;
+            }
+
             CacheBooksInfo();
+        }
+
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(this.errorMsg.InnerText))
+            {
+                this.error.Visible = false;
+            }
+            else
+            {
+                this.error.Visible = true;
+            }
+
+            if (string.IsNullOrWhiteSpace(this.infoMsg.InnerText))
+            {
+                this.info.Visible = false;
+            }
+            else
+            {
+                this.info.Visible = true;
+            }
         }
 
         protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)
@@ -100,6 +130,11 @@ namespace R2D2.WebClient
         public void SetErrorMessage(string errorMsg)
         {
             this.errorMsg.InnerText = errorMsg;
+        }
+
+        public void SetInfoMessage(string infoMsg)
+        {
+            this.infoMsg.InnerText = infoMsg;
         }
 
         protected virtual ITrie<BookModel> CreateTrie()

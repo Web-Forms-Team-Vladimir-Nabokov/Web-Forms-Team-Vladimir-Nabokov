@@ -11,6 +11,35 @@
     public class Logic
     {
         private string linkToCover;
+
+        public IEnumerable<string> GetChapterNames(string filePath)
+        {
+            Epub epub = new Epub(filePath);
+
+            var result = epub.Content.Keys;
+            var resultSet = new HashSet<string>();
+            foreach (var item in result)
+            {
+                resultSet.Add((string)item);
+            }
+
+            return resultSet;
+        }
+
+        public string GetChapterContentAsPlainText(string filePath, string chapterName)
+        {
+            Epub epub = new Epub(filePath);
+            var content = epub.Content[chapterName] as ContentData;
+
+            return content.GetContentAsPlainText();
+        }
+
+        public string GetChapterContent(string filePath, string chapterName)
+        {
+            Epub epub = new Epub(filePath);
+            var content = epub.Content[chapterName] as ContentData;
+            return content.Content;
+        }
       
         public EpubBook GetEpubModel(string directory, string filePath)
         {

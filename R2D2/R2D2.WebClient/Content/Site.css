@@ -29,6 +29,6 @@ input[type="select"] {
 }
 
 .book-thumbnail {
-    width: 210px;
+    width: 100%;
     background: lightgray;
 }

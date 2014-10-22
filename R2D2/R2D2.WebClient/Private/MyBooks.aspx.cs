@@ -11,6 +11,7 @@
 
     using R2D2.Models;
     using R2D2.Data;
+    using R2D2.WebClient.Helpers;
 
     public partial class MyBooks : Page
     {
@@ -19,14 +20,26 @@
 
         }
 
-        public IEnumerable<Book> RepeaterMyBooks_GetData()
+        public IQueryable<Book> ListViewBooks_GetData()
         {
             var currentUserId = this.User.Identity.GetUserId();
             var db = new BooksData();
             return db.UsersBooks
                 .All()
                 .Where(b => b.ApplicationUserId == currentUserId)
+                .OrderByDescending(b => b.Rating)
                 .Select(b => b.Book);
+        }
+
+        protected void Rating_PreRender(object sender, EventArgs e)
+        {
+            if (this.IsPostBack)
+            {
+                return;
+            }
+
+            var labelRating = (Label)sender;
+            RatingFormatter.ConvertToStars(labelRating);
         }
     }
 }

@@ -84,10 +84,5 @@
             // control using the sort expression and direction.
             ListViewBooks.Sort(expression, direction2);
         }
-
-        protected void searchBtn_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

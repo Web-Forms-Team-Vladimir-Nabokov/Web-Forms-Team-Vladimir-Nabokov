@@ -80,24 +80,6 @@ namespace R2D2.WebClient
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(this.errorMsg.InnerText))
-            {
-                this.error.Visible = false;
-            }
-            else
-            {
-                this.error.Visible = true;
-            }
-
-            if (string.IsNullOrWhiteSpace(this.infoMsg.InnerText))
-            {
-                this.info.Visible = false;
-            }
-            else
-            {
-                this.info.Visible = true;
-            }
-
             CacheBooksInfo();
         }
 

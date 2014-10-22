@@ -93,7 +93,7 @@
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administration <b class="caret"></b></a>
                                             <ul class="dropdown-menu">
                                                 <li><a runat="server" href="~/Administration/Upload.aspx">Upload book</a></li>
-                                                <li><a href="#">Manage users</a></li>
+                                                <li><a runat="server" href="~/Administration/ManageUsers.aspx">Manage users</a></li>
                                             </ul>
                                         </li>
                                     </ul>

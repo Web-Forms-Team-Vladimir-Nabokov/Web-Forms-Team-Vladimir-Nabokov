@@ -164,6 +164,7 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
+    <Content Include="Administration\ManageUsers.aspx" />
     <Content Include="Administration\Upload.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -354,6 +355,13 @@
     </Compile>
     <Compile Include="Administration\Admin.master.designer.cs">
       <DependentUpon>Admin.master</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\ManageUsers.aspx.cs">
+      <DependentUpon>ManageUsers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\ManageUsers.aspx.designer.cs">
+      <DependentUpon>ManageUsers.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administration\Upload.aspx.cs">
       <DependentUpon>Upload.aspx</DependentUpon>

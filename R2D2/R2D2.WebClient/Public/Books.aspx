@@ -75,7 +75,7 @@
                                         </h3>
                                       </div>
                                       <div class="panel-body">
-                                          <img class="book-thumbnail" src="<%# Item.CoverUrl %>" id="coverUrl" runat="server" alt="<%#: Item.Title %>" />
+                                          <img class="book-thumbnail" src="<%# Item.CoverUrl %>" id="coverUrl" runat="server" alt="<%#: Item.Title %>" onerror="this.onload = null; this.src='../Imgs/knowledge.png';" />
                                         <hr />
                                         <strong>Author:</strong> <%#: Item.Author %><br />
                                         <strong>Date:</strong> <%#: Item.DatePublished.ToString("MMMM dd, yyyy") %><br />

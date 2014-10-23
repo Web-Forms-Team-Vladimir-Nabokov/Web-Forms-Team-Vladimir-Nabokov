@@ -7,27 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace R2D2.WebClient {
+namespace R2D2.WebClient.Controls {
     
     
-    public partial class _Default {
+    public partial class ListBooks {
         
         /// <summary>
-        /// ListBestReadings control.
+        /// GvBestReadings control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::R2D2.WebClient.Controls.ListBooks ListBestReadings;
-        
-        /// <summary>
-        /// ListBooks control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::R2D2.WebClient.Controls.ListBooks ListBooks;
+        protected global::System.Web.UI.WebControls.GridView GvBestReadings;
     }
 }

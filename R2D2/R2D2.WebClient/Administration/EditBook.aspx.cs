@@ -32,7 +32,15 @@ namespace R2D2.WebClient.Administration
 
         protected void Page_PreRender(object sender, EventArgs e)
         {
+            //var categoryBox = this.FvEdit.FindControl("chlCategories") as CheckBoxList;
+            //var book = this.data.Books.Find(Request.QueryString["id"]);
+            //foreach (var cat in book.Categories)
+            //{
+            //    var stuff = categoryBox.Items.Cast<ListItem>().FirstOrDefault(li => int.Parse(li.Value) == cat.Id);
+            //    stuff.Selected = true;
+            //}
 
+            //categoryBox.DataBind();
         }
 
         // The id parameter should match the DataKeyNames value set on the control
@@ -62,6 +70,11 @@ namespace R2D2.WebClient.Administration
             }
 
             Response.Redirect("~/Administration/EditBook.aspx?id=" + id.ToString());
+        }
+
+        public IQueryable<Category> DdlCategories_GetData()
+        {
+            return this.data.Categories.All();
         }
     }
 }

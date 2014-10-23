@@ -5,8 +5,6 @@
     white-space: normal;
 }
 
-
-
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
     .jumbotron {
@@ -89,4 +87,17 @@
 
 .separator {
     margin: 0 5px;
+}
+
+.chl-box{
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+.chl-box input {
+    margin: 0 15px;
+}
+
+.chl-box label {
+    margin-right: 30px;
 }

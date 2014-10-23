@@ -157,6 +157,15 @@
                     <p>
                         &copy; <%: DateTime.Now.Year %> - ASP.NET WebForms Teamwork by <a href="https://github.com/Web-Forms-Team-Vladimir-Nabokov" target="_blank">Team "Vladimir Nabokov"</a> | <a runat="server" href="~/Public/Sitemap.aspx">Sitemap</a>
                     </p>
+                    <div class="row">
+                        <div class="col-md-6 col-offset-6" style="margin-left: 310px;margin-top:-20px;">
+                            <asp:Menu ID="NavigationMenu" runat="server" StaticMenustyle-CssClass="pagination" DynamicMenuItemStyle-CssClass="label label-default footerNavigationItem" SkipLinkText=""
+                            EnableViewState="False" IncludeStyleBlock="False" Orientation="Horizontal" 
+                            DataSourceID="SiteMapDataSource" StaticDisplayLevels="2">
+                            </asp:Menu>
+                            <asp:SiteMapDataSource ID="SiteMapDataSource" runat="server" />
+                        </div>
+                    </div>
                 </footer>
             </div>
         </div>

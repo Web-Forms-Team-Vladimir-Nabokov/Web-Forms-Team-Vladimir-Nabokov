@@ -49,8 +49,7 @@
                                             class="list-group-item-heading">
                                             <p class="list-group-item-header"><%#: Item.Title %></p>
                                             <div class="thumbnail">
-                                                <img src="<%# Item.CoverUrl %>" runat="server"
-                                                    alt="<%#: Item.Title %>" />
+                                                <img src="<%# Item.CoverUrl  %>" id="coverUrl" runat="server" alt="<%# Item.Title  %>" onerror="this.onload = null; this.src='../Imgs/knowledge.png';" />
                                             </div>
                                         </a>
                                     </div>

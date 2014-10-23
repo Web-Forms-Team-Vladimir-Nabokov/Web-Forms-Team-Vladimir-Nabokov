@@ -13,26 +13,35 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="thumbnail">
-                                    <img src="<%# Item.CoverUrl  %>" id="coverUrl" runat="server" alt="<%# Item.Title  %>"  onerror="this.onload = null; this.src='../Imgs/knowledge.png';"/>
+                                    <img src="<%# Item.CoverUrl  %>" id="coverUrl" runat="server" alt="<%# Item.Title  %>" onerror="this.onload = null; this.src='../Imgs/knowledge.png';" />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <p>Published on: <%#: Item.DatePublished.ToShortDateString() %></p>
                                 <p>Language: <%#: Item.Language %></p>
-                                <p>Rating: <asp:Label runat="server" OnPreRender="Rating_PreRender" Text="<%# Item.Rating %>"></asp:Label>
+                                <p>
+                                    Rating:
+                                    <asp:Label runat="server" OnPreRender="Rating_PreRender" Text="<%# Item.Rating %>"></asp:Label>
                                 </p>
                                 <p>
+                                    Description: 
                                     <strong><%#: string.IsNullOrWhiteSpace(Item.Description) ? "No description" : Item.Description %></strong>
                                 </p>
                                 <asp:LinkButton ID="btnRead" runat="server"
                                     PostBackUrl='<%#: "~/Private/ReadBook.aspx?bookId=" + Item.Id %>'
                                     CssClass="btn btn-primary">Read</asp:LinkButton>
-                                <% if(this.User.Identity.IsAuthenticated) { %>
-                                    <asp:Button ID="btnAddToBookshelf" runat="server"
-                                        CssClass="btn btn-info"
-                                        OnClick="btnAddToBookshelf_Click"
-                                        Text="Add to my shelf" />
+                                <% if (this.User.Identity.IsAuthenticated)
+                                   { %>
+                                <asp:Button ID="btnAddToBookshelf" runat="server"
+                                    CssClass="btn btn-info"
+                                    OnClick="btnAddToBookshelf_Click"
+                                    Text="Add to my shelf" />
                                 <% } %>
+                                 <% if (User.IsInRole("Admin"))
+                           { %>
+                        <asp:LinkButton CssClass="btn btn-warning" Text="Edit book" runat="server" PostBackUrl='<%# "~/Administration/EditBook.aspx?id=" + Item.Id %>' />
+
+                        <%  } %>
                             </div>
                         </div>
                     </ItemTemplate>

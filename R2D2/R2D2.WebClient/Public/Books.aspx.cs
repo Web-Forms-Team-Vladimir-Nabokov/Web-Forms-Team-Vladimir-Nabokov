@@ -15,6 +15,18 @@
     public partial class Books : Page
     {
         private const int DefaultPageSize = 10;
+        private IData data;
+
+        public Books(IData data)
+        {
+            this.data = data;
+        }
+
+        public Books()
+            : this(new BooksData())
+        {
+
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -26,9 +38,10 @@
             if (String.IsNullOrWhiteSpace(categoryString))
             {
                 categoryString = String.Empty;
+                return this.data.Books.All().OrderBy(b => b.Id);
             }
 
-            var dataBase = new BooksData();
+            var dataBase = this.data;
             var bestReadings = dataBase.Books
                 .All()
                 .Where(b => b.Categories.Any(c => c.Name.Contains(categoryString)))
@@ -40,7 +53,7 @@
 
         public IQueryable<Category> gvListAllCategories_GetData()
         {
-            var dataBase = new BooksData();
+            var dataBase = this.data;
             var allCategories = dataBase.Categories
                 .All();
 

@@ -63,7 +63,20 @@ namespace R2D2.WebClient.Administration
                 return;
             }
 
+            item.Categories.Clear();
+            var categoriesList = this.FvEdit.FindControl("chlCategories") as CheckBoxList;
+            foreach (ListItem categoryItem in categoriesList.Items)
+            {
+                if (categoryItem.Selected)
+                {
+                    var catId = int.Parse(categoryItem.Value);
+                    var category = this.data.Categories.Find(catId);
+                    category.Books.Add(item);
+                }
+            }
+
             TryUpdateModel(item);
+
             if (ModelState.IsValid)
             {
                 this.data.SaveChanges();
@@ -75,6 +88,25 @@ namespace R2D2.WebClient.Administration
         public IQueryable<Category> DdlCategories_GetData()
         {
             return this.data.Categories.All();
+        }
+
+        protected void chlCategories_PreRender(object sender, EventArgs e)
+        {
+            var currentId = Guid.Parse(this.Request.QueryString["id"]);
+            var currentBook = this.data.Books.Find(currentId);
+            if (currentBook == null)
+            {
+                return;
+            }
+
+            var categoriesList = (CheckBoxList)sender;
+            foreach (ListItem item in categoriesList.Items)
+            {
+                if (currentBook.Categories.Any(c => c.Id.ToString() == item.Value))
+                {
+                    item.Selected = true;
+                }
+            }
         }
     }
 }

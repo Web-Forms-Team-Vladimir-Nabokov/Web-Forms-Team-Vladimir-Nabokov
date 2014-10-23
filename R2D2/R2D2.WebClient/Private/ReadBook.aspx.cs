@@ -27,7 +27,7 @@
             var chapterId = cmdArguments[1];
 
             var hashIndex = chapterSource.IndexOf('#');
-            var hash = chapterSource.Substring(hashIndex);
+            var hash = hashIndex < 0 ? "#" : chapterSource.Substring(hashIndex);
 
             this.hiddenField.InnerText = chapterId.ToString();
             this.hiddenField.InnerText += "," + hash;

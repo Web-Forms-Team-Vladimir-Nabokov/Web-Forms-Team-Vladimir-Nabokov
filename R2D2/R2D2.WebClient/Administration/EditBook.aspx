@@ -33,7 +33,14 @@
                         </div>
                         <div class="form-group col-md-10">
                             <span>Choose book's category: </span>
-                            <asp:CheckBoxList CssClass="chl-box" runat="server" ID="chlCategories" DataTextField="Name" DataValueField="ID" ItemType="R2D2.Models.Category" SelectMethod="DdlCategories_GetData" RepeatColumns="5" RepeatDirection="Vertical"></asp:CheckBoxList>
+                            <asp:CheckBoxList runat="server" ID="chlCategories"
+                                DataTextField="Name" DataValueField="ID"
+                                ItemType="R2D2.Models.Category"
+                                SelectMethod="DdlCategories_GetData"
+                                OnPreRender="chlCategories_PreRender"
+                                CssClass="chl-box"
+                                RepeatColumns="5" RepeatDirection="Vertical">
+                            </asp:CheckBoxList>
                         </div>
                     </div>
                     <div class="form-group row">

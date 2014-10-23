@@ -164,6 +164,7 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
+    <Content Include="AddMeToWebConfig.txt" />
     <Content Include="Administration\EditBook.aspx" />
     <Content Include="Administration\ManageUsers.aspx" />
     <Content Include="Administration\Upload.aspx" />

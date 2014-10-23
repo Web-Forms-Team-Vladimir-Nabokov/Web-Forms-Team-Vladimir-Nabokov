@@ -31,6 +31,12 @@ namespace R2D2.WebClient.Administration
         {
             this.master = this.Master.Master as SiteMaster;
         }
+
+        protected void Upload_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
         protected void UploadButton_Click(object sender, EventArgs e)
         {
             if (!FileUploadControl.HasFile)
@@ -90,13 +96,28 @@ namespace R2D2.WebClient.Administration
             {
                 Author = epubBook.Author,
                 BookUrl = serverDirectory + "/" + filename,
-                CoverUrl =  serverDirectory + "/" + epubBook.CoverUrl,
+                CoverUrl = serverDirectory + "/" + epubBook.CoverUrl,
                 DatePublished = epubBook.DatePublished,
                 Description = epubBook.Description,
                 Language = epubBook.Language,
                 Rating = 0,
                 Title = epubBook.Title,
             };
+
+            var selectedCategories = this.chlCategories.Items.Cast<ListItem>()
+                .Where(li => li.Selected)
+                .ToList();
+
+            for (int i = 0; i < selectedCategories.Count; i++)
+            {
+                var currentCategory = selectedCategories[i];
+                var foundCategory = this.data.Categories.Find(int.Parse(currentCategory.Value));
+
+                if (foundCategory != null)
+                {
+                    book.Categories.Add(foundCategory);
+                }
+            }
 
             try
             {
@@ -117,6 +138,11 @@ namespace R2D2.WebClient.Administration
         private string GetCurrentDateDirectoryName()
         {
             return DateTime.Now.Day.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Year.ToString();
+        }
+
+        public IQueryable<Category> DdlCategories_GetData()
+        {
+            return this.data.Categories.All();
         }
     }
 }

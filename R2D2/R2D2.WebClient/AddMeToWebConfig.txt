@@ -1,0 +1,8 @@
+﻿  <system.web>
+    <siteMap defaultProvider="secureProvider">
+      <providers>
+        <add name="secureProvider" type="System.Web.XmlSiteMapProvider"
+            siteMapFile="Web.sitemap" securityTrimmingEnabled="true" />
+      </providers>
+    </siteMap>
+  </system.web>

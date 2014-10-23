@@ -4,7 +4,12 @@
     <div class="jumbotron">
         <h3>Upload your epub files here:</h3>
         <asp:FileUpload ID="FileUploadControl" runat="server" />
-        <asp:Button runat="server" ID="UploadButton" Text="Upload" OnClick="UploadButton_Click" />
+        <br />
+        <div>
+            <span>Choose book's category: </span>
+            <asp:CheckBoxList CssClass="chl-box" runat="server" ID="chlCategories" DataTextField="Name" DataValueField="ID" ItemType="R2D2.Models.Category" SelectMethod="DdlCategories_GetData" RepeatColumns="5" RepeatDirection="Vertical"></asp:CheckBoxList>
+        </div>
+        <asp:Button runat="server" ID="UploadButton" Text="Upload" OnClick="UploadButton_Click" CssClass="btn btn-md btn-primary" />
         <br />
         <br />
         <asp:Label runat="server" ID="StatusLabel" Text="" />

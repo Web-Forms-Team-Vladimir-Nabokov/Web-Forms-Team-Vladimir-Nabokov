@@ -31,11 +31,6 @@
 
         protected void Rating_PreRender(object sender, EventArgs e)
         {
-            if (this.IsPostBack)
-            {
-                return;
-            }
-
             var labelRating = (Label)sender;
             RatingFormatter.ConvertToStars(labelRating);
         }

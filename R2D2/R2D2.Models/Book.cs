@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using System.Linq;
 
     public class Book
     {
@@ -33,10 +34,6 @@
         public string CoverUrl { get; set; }
 
         public string BookUrl { get; set; }
-
-        public double RatingCount { get; set; }
-
-        public double RatingSum { get; set; }
 
         public double Rating { get; set; }
 
@@ -68,7 +65,9 @@
 
         public void SetRating()
         {
-            this.Rating = this.RatingSum / this.RatingCount;
+            double ratingCount = this.Users.Count;
+            double ratingSum = this.Users.Sum(b => b.Rating);
+            this.Rating = ratingSum / ratingCount;
         }
     }
 }

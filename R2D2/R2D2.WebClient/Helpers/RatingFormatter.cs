@@ -1,5 +1,6 @@
 ﻿namespace R2D2.WebClient.Helpers
 {
+    using System;
     using System.Web.UI.HtmlControls;
     using System.Web.UI.WebControls;
 
@@ -7,7 +8,7 @@
     {
         public static void ConvertToStars(Label ratingControl)
         {
-            int rating = int.Parse(ratingControl.Text);
+            double rating = Math.Round(double.Parse(ratingControl.Text));
             if (rating <= 0)
             {
                 ratingControl.Text = "Not rated";

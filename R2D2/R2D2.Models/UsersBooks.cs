@@ -19,7 +19,7 @@
         [ForeignKey("BookId")]
         public virtual Book Book { get; set; }
 
-        [Range(0, 10)]
-        public double? Rating { get; set; }
+        [Range(0, 5)]
+        public double Rating { get; set; }
     }
 }

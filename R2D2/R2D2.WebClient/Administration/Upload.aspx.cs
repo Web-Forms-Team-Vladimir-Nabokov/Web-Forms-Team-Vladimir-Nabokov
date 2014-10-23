@@ -94,8 +94,7 @@ namespace R2D2.WebClient.Administration
                 DatePublished = epubBook.DatePublished,
                 Description = epubBook.Description,
                 Language = epubBook.Language,
-                RatingCount = 0,
-                RatingSum = 0,
+                Rating = 0,
                 Title = epubBook.Title,
             };
 

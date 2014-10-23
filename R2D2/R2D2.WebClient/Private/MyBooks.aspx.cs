@@ -15,9 +15,11 @@
 
     public partial class MyBooks : Page
     {
+        private SiteMaster masterPage;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            this.masterPage = this.Master as SiteMaster;           
         }
 
         public IQueryable<Book> ListViewBooks_GetData()
@@ -33,13 +35,54 @@
 
         protected void Rating_PreRender(object sender, EventArgs e)
         {
-            if (this.IsPostBack)
-            {
-                return;
-            }
-
             var labelRating = (Label)sender;
             RatingFormatter.ConvertToStars(labelRating);
+        }
+
+        protected void btnRate_Command(object sender, CommandEventArgs e)
+        {
+            var arguments = e.CommandArgument.ToString()
+                .Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            Guid bookId = Guid.Parse(arguments[0]);
+            double vote = double.Parse(arguments[1]);
+
+            try
+            {
+                var db = new BooksData();
+                string currentUserId = this.User.Identity.GetUserId();
+
+                var currentBook = db.UsersBooks.All()
+                    .FirstOrDefault(b =>
+                        b.ApplicationUserId == currentUserId &&
+                        b.BookId == bookId);
+
+                currentBook.Rating = vote;
+                currentBook.Book.SetRating();
+                db.SaveChanges();
+                this.ListViewBooks.DataBind();
+                this.masterPage.SetInfoMessage("Ranking accepted successfully.");
+            }
+            catch (Exception ex)
+            {
+                this.masterPage.SetErrorMessage(ex.Message);
+            }
+        }
+
+        protected void btnRemoveBook_Command(object sender, CommandEventArgs e)
+        {
+            var db = new BooksData();
+            string currentUserId = this.User.Identity.GetUserId();
+            Guid bookId = Guid.Parse(e.CommandArgument.ToString());
+
+            var currentBook = db.UsersBooks
+                .All()
+                .FirstOrDefault(b => 
+                    b.ApplicationUserId == currentUserId && 
+                    b.BookId == bookId);
+
+            db.UsersBooks.Delete(currentBook);
+            db.SaveChanges();
+            this.ListViewBooks.DataBind();
         }
     }
 }

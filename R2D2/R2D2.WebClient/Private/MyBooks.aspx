@@ -3,19 +3,27 @@
 <asp:Content ID="ContentMyBooks" ContentPlaceHolderID="MainContent" runat="server">
     <div class="row">
         <div class="col-md-12">
-            <h3 class="panel-title">My books</h3>
+            <h3>My books</h3>
             <div class="row">
                 <%-- Paging! --%>
                 <div class="col-md-12">
                     <asp:DataPager ID="DataPagerMyBooks" runat="server"
-                        PagedControlID="ListViewBooks" PageSize="12"
+                        PagedControlID="ListViewBooks" PageSize="6"
                         QueryStringField="page">
                         <Fields>
-                            <asp:NextPreviousPagerField ButtonCssClass="btn btn-info" ShowFirstPageButton="true"
-                                ShowNextPageButton="false" ShowPreviousPageButton="false" />
-                            <asp:NumericPagerField CurrentPageLabelCssClass="btn btn-primary" NumericButtonCssClass="btn btn-info" />
-                            <asp:NextPreviousPagerField ShowLastPageButton="true"
-                                ShowNextPageButton="false" ShowPreviousPageButton="false" ButtonCssClass="btn btn-info" />
+                            <asp:NextPreviousPagerField
+                                ButtonCssClass="btn btn-sm btn-info"
+                                ShowFirstPageButton="true"
+                                ShowNextPageButton="false"
+                                ShowPreviousPageButton="false" />
+                            <asp:NumericPagerField
+                                CurrentPageLabelCssClass="btn btn-sm btn-primary"
+                                NumericButtonCssClass="btn btn-sm btn-info" />
+                            <asp:NextPreviousPagerField
+                                ShowLastPageButton="true"
+                                ShowNextPageButton="false"
+                                ShowPreviousPageButton="false"
+                                ButtonCssClass="btn btn-sm btn-info" />
                         </Fields>
                     </asp:DataPager>
                 </div>
@@ -41,25 +49,62 @@
                                             class="list-group-item-heading">
                                             <p class="list-group-item-header"><%#: Item.Title %></p>
                                             <div class="thumbnail">
-                                                <img src="<%# Item.CoverUrl %>" runat="server" 
+                                                <img src="<%# Item.CoverUrl %>" runat="server"
                                                     alt="<%#: Item.Title %>" />
                                             </div>
                                         </a>
                                     </div>
                                     <div class="col-md-6">
+                                        <strong>Author:</strong>
                                         <p class="list-group-item-text">
-                                            <strong>Author:</strong> <%#: Item.Author %>
+                                            <%#: Item.Author %>
                                         </p>
+                                        <strong>Date:</strong>
                                         <p class="list-group-item-text">
-                                            <strong>Date:</strong> <%#: Item.DatePublished.ToString("MMMM dd, yyyy") %>
+                                            <%#: Item.DatePublished.ToString("MMMM dd, yyyy") %>
                                         </p>
+                                        <strong>Rating: </strong>
                                         <p class="list-group-item-text">
-                                            <strong>Rating: </strong>
-                                            <asp:Label runat="server" 
-                                                OnPreRender="Rating_PreRender" 
+                                            <asp:Label runat="server"
+                                                OnPreRender="Rating_PreRender"
                                                 Text="<%# Item.Rating %>">
                                             </asp:Label>
                                         </p>
+                                        <strong>Your rating: 
+                                                <%# Item.Users
+                                                .First(b => b.ApplicationUserId == this.User.Identity.GetUserId())
+                                                .Rating %>
+                                        </strong>
+                                        <p class="list-group-item-text">
+                                            <asp:Label runat="server">
+                                                <asp:LinkButton runat="server"
+                                                    OnCommand="btnRate_Command"
+                                                    CommandArgument='<%# Item.Id + "," + 1 %>'>                                                 <span class="glyphicon glyphicon-star" />
+                                                </asp:LinkButton>
+                                                <asp:LinkButton runat="server"
+                                                    OnCommand="btnRate_Command"
+                                                    CommandArgument='<%# Item.Id + "," + 2 %>'>                                                 <span class="glyphicon glyphicon-star" />
+                                                </asp:LinkButton>
+                                                <asp:LinkButton runat="server"
+                                                    OnCommand="btnRate_Command"
+                                                    CommandArgument='<%# Item.Id + "," + 3 %>'>                                                 <span class="glyphicon glyphicon-star" />
+                                                </asp:LinkButton>
+                                                <asp:LinkButton runat="server"
+                                                    OnCommand="btnRate_Command"
+                                                    CommandArgument='<%# Item.Id + "," + 4 %>'>                                                 <span class="glyphicon glyphicon-star" />
+                                                </asp:LinkButton>
+                                                <asp:LinkButton runat="server"
+                                                    OnCommand="btnRate_Command"
+                                                    CommandArgument='<%# Item.Id + "," + 5 %>'>                                                 <span class="glyphicon glyphicon-star" />
+                                                </asp:LinkButton>
+                                            </asp:Label>
+                                        </p>
+                                        <br />
+                                        <asp:Button ID="btnRemoveBook" runat="server" 
+                                            CssClass="btn btn-sm btn-danger"
+                                            Text="Remove from shelf"
+                                            OnCommand="btnRemoveBook_Command"
+                                            CommandArgument="<%# Item.Id %>" />
                                     </div>
                                 </div>
                             </div>

@@ -82,7 +82,6 @@ namespace R2D2.WebClient.Administration
 
             var user = this.data.Users.Find(e.CommandArgument);
 
-
             if (user.Roles.Count() == 1)
             {
                 user.Roles.Remove(user.Roles.FirstOrDefault());

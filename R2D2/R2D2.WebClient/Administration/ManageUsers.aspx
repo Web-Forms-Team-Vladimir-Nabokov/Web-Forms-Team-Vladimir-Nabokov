@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="Manage Users" Language="C#" MasterPageFile="~/Administration/Admin.master" AutoEventWireup="true" CodeBehind="ManageUsers.aspx.cs" Inherits="R2D2.WebClient.Administration.ManageUsers" %>
 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="AdminContent" runat="server">
+
     <div class="container">
         <div class="form-group col-lg-6">
             <asp:TextBox CssClass="form-control" runat="server" ID="TbSearch" OnTextChanged="TbSearch_TextChanged" TextMode="Search" AutoPostBack="true"></asp:TextBox>

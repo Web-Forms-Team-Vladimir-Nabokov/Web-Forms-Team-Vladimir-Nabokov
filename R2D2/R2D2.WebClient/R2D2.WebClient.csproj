@@ -458,6 +458,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Books\" />
+    <Folder Include="Controls\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

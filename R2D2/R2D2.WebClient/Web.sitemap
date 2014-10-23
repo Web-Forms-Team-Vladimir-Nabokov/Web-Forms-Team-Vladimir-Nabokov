@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0">
+  <siteMapNode title="Home" description="Home Page" url="~/">
+    <siteMapNode title="Books" description="Products Page" url="~/Public/Books.aspx">
+      <siteMapNode title="Adventure" description="Adventure" url="~/Public/Books.aspx?category=Adventure" />
+      <siteMapNode title="Art" description="Art" url="~/Public/Books.aspx?category=Art" />
+      <siteMapNode title="Biography" description="Biography" url="~/Public/Books.aspx?category=Biography" />
+      <siteMapNode title="Comics" description="Comics" url="~/Public/Books.aspx?category=Comics" />
+      <siteMapNode title="Computers" description="Computers" url="~/Public/Books.aspx?category=Computers" />
+      <siteMapNode title="Cooking" description="Cooking" url="~/Public/Books.aspx?category=Cooking" />
+      <siteMapNode title="Education" description="Education" url="~/Public/Books.aspx?category=Education" />
+      <siteMapNode title="Erotic" description="Erotic" url="~/Public/Books.aspx?category=Erotic" />
+      <siteMapNode title="Fantasy" description="Fantasy" url="~/Public/Books.aspx?category=Fantasy" />
+      <siteMapNode title="Fiction" description="Fiction" url="~/Public/Books.aspx?category=Fiction" />
+      <siteMapNode title="History" description="History" url="~/Public/Books.aspx?category=History" />
+      <siteMapNode title="Horror" description="Horror" url="~/Public/Books.aspx?category=Horror" />
+      <siteMapNode title="Law" description="Law" url="~/Public/Books.aspx?category=Law" />
+      <siteMapNode title="Medical" description="Medical" url="~/Public/Books.aspx?category=Medical" />
+      <siteMapNode title="Music" description="Music" url="~/Public/Books.aspx?category=Music" />
+      <siteMapNode title="Mystery" description="Mystery" url="~/Public/Books.aspx?category=Mystery" />
+      <siteMapNode title="Philosophy" description="Philosophy" url="~/Public/Books.aspx?category=Philosophy" />
+      <siteMapNode title="Poetry" description="Poetry" url="~/Public/Books.aspx?category=Poetry" />
+      <siteMapNode title="Thriller" description="Thriller" url="~/Public/Books.aspx?category=Thriller" />
+    </siteMapNode>
+    <siteMapNode title="Upload Book" description="Upload Book" url="~/Administration/Upload.aspx" roles="admins" />
+    <siteMapNode title="Manage Users" description="Manage Users" url="~/Administration/ManageUsers.aspx" roles="admins" />
+    <siteMapNode title="My Books" description="My Books" url="~/Private/MyBooks.aspx" roles="admins"/>
+  </siteMapNode>
+</siteMap>

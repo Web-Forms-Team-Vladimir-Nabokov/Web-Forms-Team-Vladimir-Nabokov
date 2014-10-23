@@ -13,6 +13,42 @@ namespace R2D2.WebClient {
     public partial class SiteMaster {
         
         /// <summary>
+        /// searchPattern control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox searchPattern;
+        
+        /// <summary>
+        /// foundBooksDdl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl foundBooksDdl;
+        
+        /// <summary>
+        /// UpdatePanelFoundBooks control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanelFoundBooks;
+        
+        /// <summary>
+        /// ListViewFoundBooks control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView ListViewFoundBooks;
+        
+        /// <summary>
         /// error control.
         /// </summary>
         /// <remarks>

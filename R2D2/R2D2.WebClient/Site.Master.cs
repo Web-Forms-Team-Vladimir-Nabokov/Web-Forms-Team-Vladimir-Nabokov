@@ -130,6 +130,7 @@ namespace R2D2.WebClient
                 .All()
                 .Select(b => new BookModel
                 {
+                    Id = b.Id,
                     Author = b.Author,
                     Title = b.Title,
                     CoverUrl = b.CoverUrl
@@ -163,6 +164,27 @@ namespace R2D2.WebClient
         {
             CacheBooksInfo();
         }
-    }
 
+        protected void searchPattern_TextChanged(object sender, EventArgs e)
+        {
+            var pattern = this.searchPattern.Text;
+
+            if (pattern != "")
+            {
+                var patternToLowerCaseInvariant = pattern.ToLowerInvariant();
+                var trie = this.Cache["books"] as ITrie<BookModel>;
+                var foundBooks = trie.Retrieve(patternToLowerCaseInvariant).Take(10).ToList();
+                this.ListViewFoundBooks.DataSource = foundBooks;
+                this.ListViewFoundBooks.DataBind();
+                this.ListViewFoundBooks.Visible = true;
+                this.foundBooksDdl.Visible = true;
+            }
+            else
+            {
+                this.ListViewFoundBooks.DataSource = new List<BookModel>(); ;
+                this.ListViewFoundBooks.DataBind();
+                this.ListViewFoundBooks.Visible = false;
+            }
+        }
+    }
 }

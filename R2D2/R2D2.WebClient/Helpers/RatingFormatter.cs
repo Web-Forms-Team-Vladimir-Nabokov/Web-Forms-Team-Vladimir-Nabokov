@@ -8,6 +8,11 @@
     {
         public static void ConvertToStars(Label ratingControl)
         {
+            if (ratingControl.Text.Length > 3)
+            {
+                ratingControl.Text = "0";
+            }
+
             double rating = Math.Round(double.Parse(ratingControl.Text));
             if (rating <= 0)
             {

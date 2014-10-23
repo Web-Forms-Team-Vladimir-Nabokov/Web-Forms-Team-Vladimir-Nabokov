@@ -56,6 +56,38 @@
                         <li>
                             <a runat="server" href="~/Public/Books.aspx">Books</a>
                         </li>
+                        <li>
+                            <asp:TextBox runat="server" ID="searchPattern" CssClass="form-control searchTxt" Placeholder="Search..." onkeyup="RefreshUpdatePanel();" OnTextChanged="searchPattern_TextChanged"></asp:TextBox>
+                            <div class="ddl-menu" id="foundBooksDdl" runat="server">
+                                <asp:UpdatePanel ID="UpdatePanelFoundBooks" runat="server" class="panel"
+                                    UpdateMode="Conditional">
+                                    <ContentTemplate>
+                                        <asp:ListView ID="ListViewFoundBooks" runat="server"
+                                            ItemType="R2D2.WebClient.DataModels.BookModel" Visible="false">
+                                            <ItemTemplate>
+                                                <div class="panel panel-default book-info">
+                                                    <a runat="server" href='<%#: "~/Public/BookDetails.aspx?bookId=" + Item.Id %>'>
+                                                        <div class="panel-body row">
+                                                            <div class="img-wrapper">
+                                                                <img src="<%# Item.CoverUrl %>" id="coverUrl" runat="server" alt="<%#: Item.Title %>" class="img-dims" />
+                                                            </div>
+                                                            <div class="description-wrapper">
+                                                                <span>Title: </span><b><%#: Item.Title %></b>
+                                                                <br />
+                                                                <span>Author: </span><b><%#: Item.Author %></b>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </ItemTemplate>
+                                        </asp:ListView>
+                                    </ContentTemplate>
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="searchPattern" EventName="Load" />
+                                    </Triggers>
+                                </asp:UpdatePanel>
+                            </div>
+                        </li>
                     </ul>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
@@ -129,5 +161,10 @@
             </div>
         </div>
     </form>
+    <script type="text/javascript">
+        function RefreshUpdatePanel() {
+            __doPostBack('<%= searchPattern.ClientID %>', '');
+        };
+    </script>
 </body>
 </html>

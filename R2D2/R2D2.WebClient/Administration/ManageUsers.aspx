@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Administration/Admin.master" AutoEventWireup="true" CodeBehind="ManageUsers.aspx.cs" Inherits="R2D2.WebClient.Administration.ManageUsers" %>
+﻿<%@ Page Title="Manage Users" Language="C#" MasterPageFile="~/Administration/Admin.master" AutoEventWireup="true" CodeBehind="ManageUsers.aspx.cs" Inherits="R2D2.WebClient.Administration.ManageUsers" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="AdminContent" runat="server">
     <div class="container">

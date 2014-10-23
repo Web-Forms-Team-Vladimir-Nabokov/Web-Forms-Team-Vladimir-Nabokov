@@ -145,7 +145,8 @@ namespace R2D2.WebClient
             for (int i = 0; i < collectionOfBooks.Count; i++)
             {
                 var currentBook = collectionOfBooks[i];
-                Trie.Add(currentBook.Title, currentBook);
+                var currentBookTitleToLowerInvariant = currentBook.Title.ToLowerInvariant();
+                Trie.Add(currentBookTitleToLowerInvariant, currentBook);
             }
         }
 

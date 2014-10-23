@@ -44,18 +44,22 @@ input[type="select"] {
     position: relative;
 }
 
-.panel:hover {
+.book-info {
+    margin-bottom: 0 !important;
+}
+
+.book-info:hover {
     background-color: #4582ec;
 }
 
-.panel > a:hover {
+.book-info > a:hover {
     color: #fff;
     text-decoration: none;
 }
 
 .img-wrapper {
-    width: 150px;
-    height: 180px;
+    width: 80px;
+    height: 100px;
     float: left;
     padding: 0 10px;
     margin-right: 10px;
@@ -66,8 +70,7 @@ input[type="select"] {
 }
 
 .description-wrapper {
-    width: 550px;
-    height: 180px;
+    width: 500px;
     padding-top: 15px;
 }
 
@@ -77,14 +80,10 @@ input[type="select"] {
     left: 0;
     z-index: 1000;
     list-style: none;
-    font-size: 16px;
+    font-size: 14px;
     text-align: left;
 }
 
 .separator {
     margin: 0 5px;
-}
-
-.book-info {
-    margin-bottom: 0 !important;
 }

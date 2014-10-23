@@ -13,7 +13,7 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="thumbnail">
-                                    <img src="../Imgs/knowledge.png" alt="<%#: Item.Title %>" />
+                                    <img src="<%# Item.CoverUrl  %>" id="coverUrl" runat="server" alt="<%# Item.Title  %>"  onerror="this.onload = null; this.src='../Imgs/knowledge.png';"/>
                                 </div>
                             </div>
                             <div class="col-md-6">

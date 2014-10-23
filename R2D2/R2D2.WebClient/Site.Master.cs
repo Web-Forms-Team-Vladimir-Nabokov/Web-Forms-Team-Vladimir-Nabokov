@@ -187,5 +187,14 @@ namespace R2D2.WebClient
                 this.ListViewFoundBooks.Visible = false;
             }
         }
+
+        //protected string GetBookCover(BookModel model)
+        //{
+        //    if (model.CoverUrl)
+        //    {
+                
+        //    }
+        //    return "";
+        //}
     }
 }

@@ -2,45 +2,52 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using eBdb.EpubReader;
     using System.IO;
+    using System.Linq;
+
+    using eBdb.EpubReader;
+    using HtmlAgilityPack;
 
     public class Logic
     {
         private string linkToCover;
 
-        public IEnumerable<string> GetChapterNames(string filePath)
+        public IEnumerable<Tuple<string, string, int>> GetChapterNames(string filePath)
         {
-            Epub epub = new Epub(filePath);
+            var epub = new Epub(filePath);
+            var chapters = epub.TOC
+                .Select(c => new Tuple<string, string, int>(c.Source, c.Title, c.Order));
 
-            var result = epub.Content.Keys;
-            var resultSet = new HashSet<string>();
-            foreach (var item in result)
-            {
-                resultSet.Add((string)item);
-            }
-
-            return resultSet;
+            return chapters;
         }
 
-        public string GetChapterContentAsPlainText(string filePath, string chapterName)
+        public string GetChapterContentAsPlainText(string filePath, string chapterSource)
         {
-            Epub epub = new Epub(filePath);
-            var content = epub.Content[chapterName] as ContentData;
+            var epub = new Epub(filePath);
+            var content = epub.TOC
+                .FirstOrDefault(c => c.Source == chapterSource)
+                .ContentData;
 
             return content.GetContentAsPlainText();
         }
 
-        public string GetChapterContent(string filePath, string chapterName)
+        public string GetChapterContent(string filePath, string chapterSource)
         {
-            Epub epub = new Epub(filePath);
-            var content = epub.Content[chapterName] as ContentData;
-            return content.Content;
+            var epub = new Epub(filePath);
+            var html = epub.TOC
+                .FirstOrDefault(c => c.Source == chapterSource)
+                .ContentData;
+
+            var document = new HtmlDocument();
+            document.LoadHtml(html.Content);
+            var content = document
+                .DocumentNode
+                .SelectNodes("//p | //h1 | //h2 | //h3 | //h4 | //h5 | //h6")
+                .Select(c => c.OuterHtml);
+
+            return string.Join("", content);
         }
-      
+
         public EpubBook GetEpubModel(string directory, string filePath)
         {
             //Init epub object.
@@ -77,10 +84,10 @@
 
             var links = SaveExternalFiles(epub, directory);
 
-            var coverUrl = linkToCover;           
+            var coverUrl = linkToCover;
 
             DateTime published = DateTime.Now;
-            
+
             if (epub.Date.Count > 0)
             {
                 try
@@ -91,7 +98,7 @@
                 catch (ArgumentNullException)
                 {
                 }
-                catch(FormatException)
+                catch (FormatException)
                 {
                 }
             }
@@ -138,7 +145,7 @@
                     File.WriteAllBytes(currentFilePath, byteArr);
                     pathCollection.Add(currentFilePath);
                 }
-                
+
                 if (keyAsString.ToLowerInvariant().Contains("cover."))
                 {
                     linkToCover = keyAsString;

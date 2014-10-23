@@ -100,9 +100,12 @@
                                             </asp:Label>
                                         </p>
                                         <br />
-                                        <asp:Button ID="btnRemoveBook" runat="server" 
+                                        <asp:LinkButton runat="server"
+                                            PostBackUrl='<%#: "~/Private/ReadBook.aspx?bookId=" + Item.Id %>'
+                                            CssClass="btn btn-sm btn-primary">Read</asp:LinkButton>
+                                        <asp:Button ID="btnRemoveBook" runat="server"
                                             CssClass="btn btn-sm btn-danger"
-                                            Text="Remove from shelf"
+                                            Text="Remove"
                                             OnCommand="btnRemoveBook_Command"
                                             CommandArgument="<%# Item.Id %>" />
                                     </div>

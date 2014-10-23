@@ -171,6 +171,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Controls\ListBooks.ascx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Imgs\knowledge.png" />
     <Content Include="packages.config" />
@@ -385,6 +386,13 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controls\ListBooks.ascx.cs">
+      <DependentUpon>ListBooks.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ListBooks.ascx.designer.cs">
+      <DependentUpon>ListBooks.ascx</DependentUpon>
+    </Compile>
     <Compile Include="DataModels\BookModel.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -459,7 +467,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Books\" />
-    <Folder Include="Controls\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

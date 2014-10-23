@@ -19,7 +19,10 @@
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            this.ListBooks.GridViewBooks.DataSource = gvLatestBooks_GetData().ToList();
+            this.ListBooks.GridViewBooks.DataBind();
+            this.ListBestReadings.GridViewBooks.DataSource = gvBestReadings_GetData().ToList();
+            this.ListBestReadings.GridViewBooks.DataBind();
         }
 
         public IQueryable<Book> gvBestReadings_GetData()

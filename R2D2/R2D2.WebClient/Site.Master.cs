@@ -145,7 +145,8 @@ namespace R2D2.WebClient
             for (int i = 0; i < collectionOfBooks.Count; i++)
             {
                 var currentBook = collectionOfBooks[i];
-                Trie.Add(currentBook.Title, currentBook);
+                var currentBookTitleToLowerInvariant = currentBook.Title.ToLowerInvariant();
+                Trie.Add(currentBookTitleToLowerInvariant, currentBook);
             }
         }
 
@@ -186,5 +187,14 @@ namespace R2D2.WebClient
                 this.ListViewFoundBooks.Visible = false;
             }
         }
+
+        //protected string GetBookCover(BookModel model)
+        //{
+        //    if (model.CoverUrl)
+        //    {
+                
+        //    }
+        //    return "";
+        //}
     }
 }

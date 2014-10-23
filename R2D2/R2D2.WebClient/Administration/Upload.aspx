@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Administration/Admin.master" AutoEventWireup="true" CodeBehind="Upload.aspx.cs" Inherits="R2D2.WebClient.Administration.Upload" %>
+﻿<%@ Page Title="Upload books" Language="C#" MasterPageFile="~/Administration/Admin.master" AutoEventWireup="true" CodeBehind="Upload.aspx.cs" Inherits="R2D2.WebClient.Administration.Upload" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="AdminContent" runat="server">
     <div class="jumbotron">

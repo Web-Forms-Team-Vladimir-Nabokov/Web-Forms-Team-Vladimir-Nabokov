@@ -8,22 +8,32 @@
                 <EditItemTemplate>
                     <div class="row">
                         <div class="form-group col-md-7">
-                           Title: <asp:TextBox CssClass="form-control col-md-7" runat="server" ID="Title" Text="<%#: BindItem.Title %>" />
+                            Title:
+                            <asp:TextBox CssClass="form-control col-md-7" runat="server" ID="Title" Text="<%#: BindItem.Title %>" />
                         </div>
                         <div class="form-group col-md-7">
-                           Author: <asp:TextBox CssClass="form-control col-md-7" runat="server" ID="Author" Text="<%#: BindItem.Author %>" />
+                            Author:
+                            <asp:TextBox CssClass="form-control col-md-7" runat="server" ID="Author" Text="<%#: BindItem.Author %>" />
                         </div>
                         <div class="form-group col-md-7">
-                           Cover URL: <asp:TextBox CssClass="form-control col-md-7" runat="server" ID="BookUrl" Text="<%#: BindItem.CoverUrl %>" />
+                            Cover URL:
+                            <asp:TextBox CssClass="form-control col-md-7" runat="server" ID="BookUrl" Text="<%#: BindItem.CoverUrl %>" />
                         </div>
                         <div class="form-group col-md-7">
-                           DatePublished: <asp:TextBox CssClass="form-control col-md-7" runat="server" ID="DatePublished" Text="<%#: BindItem.DatePublished %>" />
+                            DatePublished:
+                            <asp:TextBox CssClass="form-control col-md-7" runat="server" ID="DatePublished" Text="<%#: BindItem.DatePublished %>" />
                         </div>
                         <div class="form-group col-md-7">
-                           Description: <asp:TextBox CssClass="form-control col-md-7" runat="server" ID="Description" TextMode="MultiLine" Text="<%#: BindItem.Description %>" />
+                            Description:
+                            <asp:TextBox CssClass="form-control col-md-7" runat="server" ID="Description" TextMode="MultiLine" Text="<%#: BindItem.Description %>" />
                         </div>
                         <div class="form-group col-md-7">
-                           Language: <asp:TextBox CssClass="form-control col-md-7" runat="server" ID="Language" Text="<%#: BindItem.Language %>" />
+                            Language:
+                            <asp:TextBox CssClass="form-control col-md-7" runat="server" ID="Language" Text="<%#: BindItem.Language %>" />
+                        </div>
+                        <div class="form-group col-md-10">
+                            <span>Choose book's category: </span>
+                            <asp:CheckBoxList CssClass="chl-box" runat="server" ID="chlCategories" DataTextField="Name" DataValueField="ID" ItemType="R2D2.Models.Category" SelectMethod="DdlCategories_GetData" RepeatColumns="5" RepeatDirection="Vertical"></asp:CheckBoxList>
                         </div>
                     </div>
                     <div class="form-group row">

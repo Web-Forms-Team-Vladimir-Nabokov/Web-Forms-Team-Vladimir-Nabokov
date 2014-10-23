@@ -2,6 +2,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="AdminContent" runat="server">
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <div class="container">
+        <div class="form-group">
+            <asp:TextBox runat="server" ID="TbSearch" OnTextChanged="TbSearch_TextChanged" TextMode="Search" AutoPostBack="true"></asp:TextBox>
+        </div>
         <asp:ListView runat="server" ID="LvUsers" ItemType="R2D2.Models.ApplicationUser" SelectMethod="LvUsers_GetData">
             <LayoutTemplate>
                 <table class="table table-striped table-hover">

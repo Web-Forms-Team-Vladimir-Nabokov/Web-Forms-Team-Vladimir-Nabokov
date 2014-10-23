@@ -29,7 +29,21 @@ namespace R2D2.WebClient.Administration
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            this.master = this.Master.Master as SiteMaster;
+        }
 
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
+            foreach (string key in Request.QueryString.Keys)
+            {
+                if (key == "search")
+                {
+                    var searchValue = Request.QueryString[key];
+
+                    this.TbSearch.Text = searchValue;
+                    break;
+                }
+            }
         }
 
         // The return type can be changed to IEnumerable, however to support
@@ -40,11 +54,32 @@ namespace R2D2.WebClient.Administration
         //     string sortByExpression
         public IQueryable<ApplicationUser> LvUsers_GetData()
         {
-            return this.data.Users.All().OrderBy(u => u.UserName);
+            if (!User.IsInRole("Admin"))
+            {
+                this.master.SetErrorMessage("You are not in role Admin");
+                return new List<ApplicationUser>().AsQueryable();
+            }
+
+            var users = this.data.Users.All();
+
+            if (!string.IsNullOrWhiteSpace(TbSearch.Text))
+            {
+                users = users.Where(u => u.UserName.StartsWith(TbSearch.Text));
+            }
+
+            users = users.OrderBy(u => u.UserName);
+
+            return users;
         }
 
         protected void Btn_Command(object sender, CommandEventArgs e)
         {
+            if (!User.IsInRole("Admin"))
+            {
+                this.master.SetErrorMessage("You are not in role Admin");
+                return;
+            }
+
             var user = this.data.Users.Find(e.CommandArgument);
 
 
@@ -68,6 +103,18 @@ namespace R2D2.WebClient.Administration
             }
 
             Response.Redirect("~/Administration/ManageUsers.aspx" + queryStr);
+        }
+
+        protected void TbSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(this.TbSearch.Text))
+            {
+                Response.Redirect("~/Administration/ManageUsers.aspx");
+            }
+            else
+            {
+                Response.Redirect("~/Administration/ManageUsers.aspx" + "?search=" + this.TbSearch.Text);
+            }
         }
     }
 }

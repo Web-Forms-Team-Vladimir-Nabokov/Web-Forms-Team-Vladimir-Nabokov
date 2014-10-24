@@ -73,8 +73,20 @@ namespace R2D2.WebClient.Administration
                 Directory.CreateDirectory(directory);
                 Directory.CreateDirectory(directory + "/" + filename);
             }
-
-            FileUploadControl.SaveAs(directory + "/" + filename + "/" + filename);
+            try
+            {
+                FileUploadControl.SaveAs(directory + "/" + filename + "/" + filename);
+            }
+            catch (PathTooLongException ex)
+            {
+                this.master.SetErrorMessage("File name is too long.");
+                return;
+            }
+            catch (Exception)
+            {
+                this.master.SetErrorMessage("Error occured while saving file.");
+                return;
+            }
 
             var finalDirectory = directory + "/" + filename;
             var filePath = directory + "/" + filename + "/" + filename;
@@ -132,6 +144,8 @@ namespace R2D2.WebClient.Administration
             }
 
             this.master.SetInfoMessage("Upload status: File uploaded!");
+            this.LinkBook.Visible = true;
+            this.LinkBook.NavigateUrl = "~/Public/BookDetails.aspx?bookId=" + book.Id;
         }
 
 

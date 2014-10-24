@@ -25,7 +25,7 @@
                         </div>
                         <div class="form-group col-md-7">
                             Description:
-                            <asp:TextBox CssClass="form-control col-md-7" runat="server" ID="Description" TextMode="MultiLine" Text="<%#: BindItem.Description %>" />
+                            <asp:TextBox CssClass="form-control col-md-7" Rows="7" runat="server" ID="Description" TextMode="MultiLine" Text="<%#: BindItem.Description %>" />
                         </div>
                         <div class="form-group col-md-7">
                             Language:

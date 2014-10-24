@@ -13,5 +13,6 @@
         <br />
         <br />
         <asp:Label runat="server" ID="StatusLabel" Text="" />
+        <asp:HyperLink runat="server" ID="LinkBook" Text="Link to the book you uploaded"  CssClass="btn btn-success" Visible="false"></asp:HyperLink>
     </div>
 </asp:Content>

@@ -16,7 +16,18 @@
     public partial class MyBooks : Page
     {
         private SiteMaster masterPage;
+        private IData data;
 
+        public MyBooks(IData data)
+        {
+            this.data = data;
+        }
+
+        public MyBooks()
+            : this(new BooksData())
+        {
+
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             this.masterPage = this.Master as SiteMaster;           
@@ -25,7 +36,7 @@
         public IQueryable<Book> ListViewBooks_GetData()
         {
             var currentUserId = this.User.Identity.GetUserId();
-            var db = new BooksData();
+            var db = this.data;
             return db.UsersBooks
                 .All()
                 .Where(b => b.ApplicationUserId == currentUserId)
@@ -48,7 +59,7 @@
 
             try
             {
-                var db = new BooksData();
+                var db = this.data;
                 string currentUserId = this.User.Identity.GetUserId();
 
                 var currentBook = db.UsersBooks.All()
@@ -70,7 +81,7 @@
 
         protected void btnRemoveBook_Command(object sender, CommandEventArgs e)
         {
-            var db = new BooksData();
+            var db = this.data;
             string currentUserId = this.User.Identity.GetUserId();
             Guid bookId = Guid.Parse(e.CommandArgument.ToString());
 
@@ -83,6 +94,25 @@
             db.UsersBooks.Delete(currentBook);
             db.SaveChanges();
             this.ListViewBooks.DataBind();
+        }
+
+        protected void LbReadCurrent_Command(object sender, CommandEventArgs e)
+        {
+            var currentUser = this.data.Users.Find(this.User.Identity.GetUserId());
+            var bookIdAsStr = e.CommandArgument as string;
+            var bookId = Guid.Parse(bookIdAsStr);
+            var userBook = currentUser.Books.FirstOrDefault(b => b.BookId == bookId);
+            var currentChapterId = userBook.CurrentChapterId;
+            var currentChapterSource = userBook.CurrentChapterSource;
+
+            var linkBtn = sender as LinkButton;
+            var link = "~/Private/ReadBook.aspx?bookId=" + bookIdAsStr;
+            if (!string.IsNullOrWhiteSpace(currentChapterId) && !string.IsNullOrWhiteSpace(currentChapterSource))
+            {
+                link += "&cId=" + currentChapterId + "&cSource=" + currentChapterSource;
+            }
+
+            Response.Redirect(link);
         }
     }
 }

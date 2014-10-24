@@ -99,8 +99,11 @@
                                             </asp:Label>
                                         </p>
                                         <br />
-                                        <asp:LinkButton runat="server"
-                                            PostBackUrl='<%#: "~/Private/ReadBook.aspx?bookId=" + Item.Id %>'
+                                        <asp:LinkButton runat="server" 
+                                            ID="LbReadCurrent"
+                                            CommandName="ReadCurrent"
+                                            CommandArgument="<%# Item.Id %>"
+                                            OnCommand="LbReadCurrent_Command"
                                             CssClass="btn btn-sm btn-primary">Read</asp:LinkButton>
                                         <asp:Button ID="btnRemoveBook" runat="server"
                                             CssClass="btn btn-sm btn-danger"

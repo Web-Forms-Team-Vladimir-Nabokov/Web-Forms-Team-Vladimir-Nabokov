@@ -13,6 +13,15 @@ namespace R2D2.WebClient.Private {
     public partial class ReadBook {
         
         /// <summary>
+        /// curBookTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label curBookTitle;
+        
+        /// <summary>
         /// RepeaterChapters control.
         /// </summary>
         /// <remarks>

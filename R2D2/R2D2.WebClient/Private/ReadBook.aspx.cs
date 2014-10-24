@@ -31,14 +31,16 @@
         {
             var chapterId = this.Request.QueryString["cId"];
             var chapterSource = this.Request.QueryString["cSource"];
-            if (string.IsNullOrWhiteSpace(chapterId) || string.IsNullOrWhiteSpace(chapterSource))
-            {
-                return;
-            }
 
             var currentBookId = Guid.Parse(this.Request.QueryString["bookId"]);
             var db = this.data;
             var currentBookPath = this.MapPath(db.Books.Find(currentBookId).BookUrl);
+
+            this.curBookTitle.Text = db.Books.Find(currentBookId).Title.ToUpperInvariant();
+            if (string.IsNullOrWhiteSpace(chapterId) || string.IsNullOrWhiteSpace(chapterSource))
+            {
+                return;
+            }
 
             DisplayBook(currentBookId, currentBookPath, chapterSource, chapterId);
         }

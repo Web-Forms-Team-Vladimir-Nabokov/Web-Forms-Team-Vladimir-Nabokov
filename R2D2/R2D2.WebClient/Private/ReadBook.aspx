@@ -1,6 +1,9 @@
 ﻿<%@ Page Title="Read Book" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ReadBook.aspx.cs" Inherits="R2D2.WebClient.Private.ReadBook" %>
 
 <asp:Content ID="ContentReadBook" ContentPlaceHolderID="MainContent" runat="server">
+    <h1 class="jumbotron text-center">
+        <asp:Label ID="curBookTitle" runat="server" />
+    </h1>
     <div class="row">
         <div class="col-md-3">
             <asp:Repeater ID="RepeaterChapters" runat="server"
@@ -21,6 +24,7 @@
 
                 <FooterTemplate>
                     </div>
+               
                 </FooterTemplate>
             </asp:Repeater>
         </div>

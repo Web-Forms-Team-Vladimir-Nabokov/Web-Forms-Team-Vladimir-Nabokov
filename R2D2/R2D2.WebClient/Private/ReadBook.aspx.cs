@@ -7,11 +7,26 @@
     using System.Web.UI;
     using System.Web.UI.WebControls;
 
+    using Microsoft.AspNet.Identity;
+
     using R2D2.Data;
     using R2D2.Epub;
 
     public partial class ReadBook : Page
     {
+        private IData data;
+
+        public ReadBook(IData data)
+        {
+            this.data = data;
+        }
+
+        public ReadBook()
+            : this(new BooksData())
+        {
+
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
         }
@@ -35,6 +50,15 @@
             var readLogic = new Logic();
             var chapterContent = readLogic.GetChapterContent(currentBookPath, chapterSource);
             this.lblChapterContent.Text = chapterContent;
+            var currentUser = this.data.Users.Find(User.Identity.GetUserId());
+            var currentUserBook = currentUser.Books.FirstOrDefault(b => b.BookId == currentBookId);
+            if (currentUserBook == null)
+	        {
+		        return;
+	        }
+            currentUserBook.CurrentChapterId = chapterId;
+            currentUserBook.CurrentChapterSource = chapterSource;
+            this.data.SaveChanges();
         }
 
         protected void RepeaterChapters_Load(object sender, EventArgs e)

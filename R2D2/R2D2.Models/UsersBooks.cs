@@ -21,5 +21,9 @@
 
         [Range(0, 5)]
         public double Rating { get; set; }
+
+        public string CurrentChapterSource { get; set; }
+
+        public string CurrentChapterId { get; set; }
     }
 }

@@ -41,7 +41,7 @@
             {
                 return;
             }
-
+            chapterSource = chapterSource.Replace("__k___", "#");
             DisplayBook(currentBookId, currentBookPath, chapterSource, chapterId);
         }
 
@@ -91,7 +91,10 @@
             {
                 return;
             }
+
             currentUserBook.CurrentChapterId = chapterId;
+
+            chapterSource = chapterSource.Replace("#", "__k___");
             currentUserBook.CurrentChapterSource = chapterSource;
             this.data.SaveChanges();
         }

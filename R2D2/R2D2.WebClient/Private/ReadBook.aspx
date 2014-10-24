@@ -42,6 +42,7 @@
             $('a.list-group-item.' + text).addClass('active');
 
             window.location.hash = hiddenArguments[1];
+            window.scrollTo(0, 0);
         });
     </script>
 </asp:Content>

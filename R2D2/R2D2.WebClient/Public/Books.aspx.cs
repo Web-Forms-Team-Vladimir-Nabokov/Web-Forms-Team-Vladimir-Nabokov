@@ -61,12 +61,6 @@
             return allCategories;
         }
 
-        protected void Rating_PreRender(object sender, EventArgs e)
-        {
-            var labelRating = (Label)sender;
-            RatingFormatter.ConvertToStars(labelRating);
-        }
-
         protected void SortButton_Click(object sender, EventArgs e)
         {
 

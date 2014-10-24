@@ -174,7 +174,7 @@ namespace R2D2.WebClient
             {
                 var patternToLowerCaseInvariant = pattern.ToLowerInvariant();
                 var trie = this.Cache["books"] as ITrie<BookModel>;
-                var foundBooks = trie.Retrieve(patternToLowerCaseInvariant).Take(10).ToList();
+                var foundBooks = trie.Retrieve(patternToLowerCaseInvariant).Take(5).ToList();
                 this.ListViewFoundBooks.DataSource = foundBooks;
                 this.ListViewFoundBooks.DataBind();
                 this.ListViewFoundBooks.Visible = true;

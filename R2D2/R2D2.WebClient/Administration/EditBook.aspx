@@ -10,6 +10,7 @@
                         <div class="form-group col-md-7">
                             Title:
                             <asp:TextBox CssClass="form-control col-md-7" runat="server" ID="Title" Text="<%# BindItem.Title %>" />
+                            <asp:RequiredFieldValidator ID="Validatorss" runat="server" ControlToValidate="Title" Text="Title is required" ErrorMessage="Title is required" ForeColor="Red" EnableClientScript="false" ></asp:RequiredFieldValidator>
                         </div>
                         <div class="form-group col-md-7">
                             Author:

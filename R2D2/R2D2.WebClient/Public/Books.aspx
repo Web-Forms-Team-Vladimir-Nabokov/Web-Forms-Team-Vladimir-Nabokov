@@ -13,7 +13,7 @@
                     <asp:Repeater ID="RepeaterCategories" runat="server" ItemType="R2D2.Models.Category" SelectMethod="gvListAllCategories_GetData">
                         <ItemTemplate>
                             <%--<span class="badge">11</span>--%>
-                            <a runat="server" class="btn btn-default" style="margin: 0px; width: 100%; height: 100%;" href='<%#: "Books.aspx?category="+ Item.Name %>'><%#: Item.Name %></a>
+                            <a runat="server" class="btn btn-default animated fadeInLeft" style="margin: 0px; width: 100%; height: 100%;" href='<%#: "Books.aspx?category="+ Item.Name %>'><%#: Item.Name %></a>
                         </ItemTemplate>
                     </asp:Repeater>
                 </div>
@@ -27,7 +27,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-4" style="margin-bottom: 20px;">
-                            <asp:DataPager ID="DataPager2" runat="server"
+                            <%--<asp:DataPager ID="DataPager2" runat="server"
                                 PagedControlID="ListViewBooks" PageSize="3"
                                 QueryStringField="page">
                                 <Fields>
@@ -37,7 +37,7 @@
                                     <asp:NextPreviousPagerField ShowLastPageButton="true"
                                         ShowNextPageButton="false" ShowPreviousPageButton="false" ButtonCssClass="btn btn-info" />
                                 </Fields>
-                            </asp:DataPager>
+                            </asp:DataPager>--%>
                         </div>
                         <div class="col-md-4">
                             <asp:DropDownList runat="server" ID="ddSortCriteria" CssClass="form-control">
@@ -45,6 +45,7 @@
                                 <asp:ListItem Value="DatePublished">Date Published</asp:ListItem>
                             </asp:DropDownList>
                         </div>
+
                         <div class="col-md-2">
                             <asp:DropDownList runat="server" ID="ddSortDirection" CssClass="form-control">
                                 <asp:ListItem Selected="True" Value="ASC">ASC</asp:ListItem>
@@ -55,6 +56,8 @@
                             <asp:Button ID="SortButton" Text="Sort" CssClass="btn btn-primary" OnClick="SortButton_Click" runat="server" />
                         </div>
                     </div>
+                    <br />
+                    <br />
                     <div class="row">
                         <asp:ListView ID="ListViewBooks" runat="server"
                             ItemType="R2D2.Models.Book" SelectMethod="gvListAllBooks_GetData">

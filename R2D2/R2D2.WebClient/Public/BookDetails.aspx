@@ -3,7 +3,7 @@
 <asp:Content ID="ContentBookDetails" ContentPlaceHolderID="MainContent" runat="server">
     <div class="row">
         <div class="col-md-12">
-            <div class="well">
+            <div class="well animated fadeIn">
                 <asp:FormView ID="fvBook" runat="server"
                     ItemType="R2D2.Models.Book"
                     SelectMethod="fvBook_GetItem">

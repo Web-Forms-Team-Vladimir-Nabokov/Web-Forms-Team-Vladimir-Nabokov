@@ -8,10 +8,10 @@
             <div class="jumbotron">
                 <div class="row">
                     <div class="col-md-6 text-center">
-                        <h1>Boost your knowledge</h1>
+                        <h1 class="animated fadeInDown">Boost your knowledge</h1>
                     </div>
                     <div class="col-md-6 text-center">
-                        <img src="Imgs/knowledge.png" />
+                        <img class="animated fadeInDown" src="Imgs/knowledge.png" />
                     </div>
                 </div>
             </div>

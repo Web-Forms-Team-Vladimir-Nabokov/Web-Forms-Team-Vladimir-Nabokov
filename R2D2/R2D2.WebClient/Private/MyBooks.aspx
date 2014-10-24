@@ -41,17 +41,23 @@
                             </div>
                         </LayoutTemplate>
                         <ItemTemplate>
-                            <div runat="server" class="list-group-item col-md-4">
+                            <div runat="server" class="list-group-item col-md-4" style="height:360px;">
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <a runat="server"
+                                    <div class="col-md-12 text-center">
+                                        <h5><a runat="server" style="text-decoration: none;"
                                             href='<%#: "~/Public/BookDetails.aspx?bookId=" + Item.Id %>'
                                             class="list-group-item-heading">
                                             <p class="list-group-item-header"><%#: Item.Title %></p>
-                                            <div class="thumbnail">
-                                                <img src="<%# Item.CoverUrl  %>" id="coverUrl" runat="server" alt="<%# Item.Title  %>" onerror="this.onload = null; this.src='../Imgs/knowledge.png';" />
-                                            </div>
-                                        </a>
+
+                                        </a></h5>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="thumbnail">
+                                            <img style="height:220px;" src="<%# Item.CoverUrl  %>" id="coverUrl" runat="server" alt="<%# Item.Title  %>" onerror="this.onload = null; this.src='../Imgs/knowledge.png';" />
+                                        </div>
                                     </div>
                                     <div class="col-md-6">
                                         <strong>Author:</strong>
@@ -70,6 +76,7 @@
                                             </asp:Label>
                                         </p>
                                         <strong>Your rating: 
+                                               
                                                 <%# Item.Users
                                                 .First(b => b.ApplicationUserId == this.User.Identity.GetUserId())
                                                 .Rating %>
@@ -99,18 +106,20 @@
                                             </asp:Label>
                                         </p>
                                         <br />
-                                        <asp:LinkButton runat="server" 
+                                    </div>
+                                </div>
+                                <div class="row custom-margin">
+                                    <asp:LinkButton runat="server"
                                             ID="LbReadCurrent"
                                             CommandName="ReadCurrent"
                                             CommandArgument="<%# Item.Id %>"
                                             OnCommand="LbReadCurrent_Command"
-                                            CssClass="btn btn-sm btn-primary">Read</asp:LinkButton>
+                                            CssClass="btn btn-sm btn-primary col-md-6">Read</asp:LinkButton>
                                         <asp:Button ID="btnRemoveBook" runat="server"
-                                            CssClass="btn btn-sm btn-danger"
+                                            CssClass="btn btn-sm btn-danger col-md-6"
                                             Text="Remove"
                                             OnCommand="btnRemoveBook_Command"
                                             CommandArgument="<%# Item.Id %>" />
-                                    </div>
                                 </div>
                             </div>
                         </ItemTemplate>

@@ -105,3 +105,8 @@
 .panel-body.active {
     background: #F5F5F5;
 }
+
+.custom-margin {
+    margin-left:5px;
+    margin-right:5px;
+}

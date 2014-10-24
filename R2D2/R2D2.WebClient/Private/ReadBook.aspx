@@ -36,7 +36,7 @@
 
     <script>
         $(document).ready(function () {
-            var hiddenArguments = $('div > h1').text().split(',');
+            var hiddenArguments = $('div.page-read > h1').text().split(',');
 
             var text = hiddenArguments[0];
             $('a.list-group-item.' + text).addClass('active');

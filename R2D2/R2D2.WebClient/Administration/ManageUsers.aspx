@@ -13,9 +13,11 @@
                     <table class="table table-striped table-bordered table-hover">
                         <thead>
                             <tr>
-                                <th>Username</th>
-                                <th>Role</th>
-                                <th>Change Role</th>
+                                <th>
+                                    <asp:Button Text="Username" CssClass="btn btn-default form-control" CommandName="Sort" CommandArgument="UserName" runat="server" />
+                                </th>
+                                <th><asp:Button Text="Role" CssClass="btn btn-default form-control" CommandName="Sort" CommandArgument="UserName" runat="server" /></th>
+                                <th><asp:Button Text="Change Role" CssClass="btn btn-default form-control" CommandName="Sort" CommandArgument="UserName" runat="server" /></th>
                             </tr>
                         </thead>
                         <tr runat="server" id="itemPlaceholder"></tr>

@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="Books" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Books.aspx.cs" Inherits="R2D2.WebClient.Public.Books" %>
 
+<%@ Register Src="~/Controls/BookInfo.ascx" TagPrefix="uc" TagName="BookInfo" %>
+
 <asp:Content ID="ContentPublicBooks" ContentPlaceHolderID="MainContent" runat="server">
     <div class="row">
         <div class="col-md-3">
@@ -62,23 +64,12 @@
 
                             <ItemTemplate>
                                 <div class="col-md-4">
-                                    <div class="panel panel-warning">
-                                        <div class="panel-heading">
-                                            <h3 class="panel-title">
-                                                <a runat="server" href='<%#: "~/Public/BookDetails.aspx?bookId=" + Item.Id %>'>
-                                                    <%#: Item.Title %>
-                                            </a>
-                                            </h3>
-                                        </div>
-                                        <div class="panel-body">
-                                            <img class="book-thumbnail" src="<%# Item.CoverUrl %>" id="coverUrl" runat="server" alt="<%#: Item.Title %>" onerror="this.onload = null; this.src='../Imgs/knowledge.png';" />
-                                            <hr />
-                                            <strong>Author:</strong> <%#: Item.Author %><br />
-                                            <strong>Date:</strong> <%#: Item.DatePublished.ToString("MMMM dd, yyyy") %><br />
-                                            <strong>Rating: </strong>
-                                            <asp:Label runat="server" OnPreRender="Rating_PreRender" Text="<%# Item.Rating %>"></asp:Label>
-                                        </div>
-                                    </div>
+                                    <uc:BookInfo runat="server" ID="BookInfo"
+                                        Title='<%# ""+Item.Title %>'
+                                        Author='<%# ""+Item.Author %>'
+                                        CoverUrl='<%#: Item.CoverUrl %>'
+                                        Rating='<%#: Item.Rating %>'
+                                        Target='<%# "~/Public/BookDetails.aspx?bookId=" + Item.Id %>' />
                                 </div>
                             </ItemTemplate>
                         </asp:ListView>

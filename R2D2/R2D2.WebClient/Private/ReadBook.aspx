@@ -29,14 +29,14 @@
             </asp:Repeater>
         </div>
         <div class="col-md-9 page-read animated fadeIn">
-            <h1 style="visibility: hidden;" runat="server" id="hiddenField"></h1>
+            <h1 style="visibility: hidden;" class="hide-me" runat="server" id="hiddenField"></h1>
             <asp:Label ID="lblChapterContent" runat="server"></asp:Label>
         </div>
     </div>
 
     <script>
         $(document).ready(function () {
-            var hiddenArguments = $('div > h1').text().split(',');
+            var hiddenArguments = $('div > h1.hide-me').text().split(',');
 
             var text = hiddenArguments[0];
             $('a.list-group-item.' + text).addClass('active');

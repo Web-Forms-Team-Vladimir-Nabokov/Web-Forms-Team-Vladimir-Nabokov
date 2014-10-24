@@ -29,36 +29,31 @@
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            var chapterId = this.Request.QueryString["cId"];
+            var chapterSource = this.Request.QueryString["cSource"];
+            if (string.IsNullOrWhiteSpace(chapterId) || string.IsNullOrWhiteSpace(chapterSource))
+            {
+                return;
+            }
+
+            var currentBookId = Guid.Parse(this.Request.QueryString["bookId"]);
+            var db = this.data;
+            var currentBookPath = this.MapPath(db.Books.Find(currentBookId).BookUrl);
+
+            DisplayBook(currentBookId, currentBookPath, chapterSource, chapterId);
         }
 
         protected void ShowChapter_Command(object sender, CommandEventArgs e)
         {
             var currentBookId = Guid.Parse(this.Request.QueryString["bookId"]);
-            var db = new BooksData();
+            var db = this.data;
             var currentBookPath = this.MapPath(db.Books.Find(currentBookId).BookUrl);
 
             var cmdArguments = e.CommandArgument.ToString().Split(new char[] { ',' });
             var chapterSource = cmdArguments[0];
             var chapterId = cmdArguments[1];
 
-            var hashIndex = chapterSource.IndexOf('#');
-            var hash = hashIndex < 0 ? "#" : chapterSource.Substring(hashIndex);
-
-            this.hiddenField.InnerText = chapterId.ToString();
-            this.hiddenField.InnerText += "," + hash;
-
-            var readLogic = new Logic();
-            var chapterContent = readLogic.GetChapterContent(currentBookPath, chapterSource);
-            this.lblChapterContent.Text = chapterContent;
-            var currentUser = this.data.Users.Find(User.Identity.GetUserId());
-            var currentUserBook = currentUser.Books.FirstOrDefault(b => b.BookId == currentBookId);
-            if (currentUserBook == null)
-	        {
-		        return;
-	        }
-            currentUserBook.CurrentChapterId = chapterId;
-            currentUserBook.CurrentChapterSource = chapterSource;
-            this.data.SaveChanges();
+            DisplayBook(currentBookId, currentBookPath, chapterSource, chapterId);
         }
 
         protected void RepeaterChapters_Load(object sender, EventArgs e)
@@ -75,6 +70,28 @@
             var readLogic = new Logic();
             this.RepeaterChapters.DataSource = readLogic.GetChapterNames(currentBookPath);
             this.RepeaterChapters.DataBind();
+        }
+
+        private void DisplayBook(Guid currentBookId, string currentBookPath, string chapterSource, string chapterId)
+        {
+            var hashIndex = chapterSource.IndexOf('#');
+            var hash = hashIndex < 0 ? "#" : chapterSource.Substring(hashIndex);
+
+            this.hiddenField.InnerText = chapterId.ToString();
+            this.hiddenField.InnerText += "," + hash;
+
+            var readLogic = new Logic();
+            var chapterContent = readLogic.GetChapterContent(currentBookPath, chapterSource);
+            this.lblChapterContent.Text = chapterContent;
+            var currentUser = this.data.Users.Find(User.Identity.GetUserId());
+            var currentUserBook = currentUser.Books.FirstOrDefault(b => b.BookId == currentBookId);
+            if (currentUserBook == null)
+            {
+                return;
+            }
+            currentUserBook.CurrentChapterId = chapterId;
+            currentUserBook.CurrentChapterSource = chapterSource;
+            this.data.SaveChanges();
         }
     }
 }

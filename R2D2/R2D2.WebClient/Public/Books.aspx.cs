@@ -30,6 +30,7 @@
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            this.catTitle.InnerText = "Category: " + (string.IsNullOrWhiteSpace(Request.QueryString["category"]) ? "No category selected" : Request.QueryString["category"]);
         }
 
         public IQueryable<Book> gvListAllBooks_GetData()

@@ -24,7 +24,7 @@
         <div class="col-md-9">
             <div class="panel-info">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Category: Fantasy</h3>
+                    <h3 runat="server" id="catTitle" class="panel-title"></h3>
                 </div>
                 <div class="panel-body">
                     <div class="row">

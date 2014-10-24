@@ -7,9 +7,9 @@
         <br />
         <div>
             <span>Choose book's category: </span>
-            <asp:CheckBoxList CssClass="chl-box" runat="server" ID="chlCategories" DataTextField="Name" DataValueField="ID" ItemType="R2D2.Models.Category" SelectMethod="DdlCategories_GetData" RepeatColumns="5" RepeatDirection="Vertical"></asp:CheckBoxList>
+            <asp:CheckBoxList CssClass="chl-box animated fadeIn" runat="server" ID="chlCategories" DataTextField="Name" DataValueField="ID" ItemType="R2D2.Models.Category" SelectMethod="DdlCategories_GetData" RepeatColumns="5" RepeatDirection="Vertical"></asp:CheckBoxList>
         </div>
-        <asp:Button runat="server" ID="UploadButton" Text="Upload" OnClick="UploadButton_Click" CssClass="btn btn-md btn-primary" />
+        <asp:Button runat="server" ID="UploadButton" Text="Upload" OnClick="UploadButton_Click" CssClass="btn btn-md btn-primary animated fadeIn" />
         <br />
         <br />
         <asp:Label runat="server" ID="StatusLabel" Text="" />

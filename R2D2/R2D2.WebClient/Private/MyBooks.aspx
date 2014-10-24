@@ -41,7 +41,7 @@
                             </div>
                         </LayoutTemplate>
                         <ItemTemplate>
-                            <div runat="server" class="list-group-item col-md-4" style="height:360px;">
+                            <div runat="server" class="list-group-item col-md-4 animated flipInY" style="height:360px;">
                                 <div class="row">
                                     <div class="col-md-12 text-center">
                                         <h5><a runat="server" style="text-decoration: none;"

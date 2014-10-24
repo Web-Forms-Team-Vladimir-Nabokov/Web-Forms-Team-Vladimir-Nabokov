@@ -16,11 +16,17 @@
                                 <th>
                                     <asp:Button Text="Username" CssClass="btn btn-default form-control" CommandName="Sort" CommandArgument="UserName" runat="server" />
                                 </th>
-                                <th><asp:Button Text="Role" CssClass="btn btn-default form-control" CommandName="Sort" CommandArgument="UserName" runat="server" /></th>
-                                <th><asp:Button Text="Change Role" CssClass="btn btn-default form-control" CommandName="Sort" CommandArgument="UserName" runat="server" /></th>
+                                <th>
+                                    <asp:Button Text="Role" CssClass="btn btn-default form-control" CommandName="Sort" CommandArgument="UserName" runat="server" />
+                                </th>
+                                <th>
+                                    <asp:Button Text="Change Role" CssClass="btn btn-default form-control" CommandName="Sort" CommandArgument="UserName" runat="server" />
+                                </th>
                             </tr>
                         </thead>
-                        <tr runat="server" id="itemPlaceholder"></tr>
+                        <tbody>
+                            <tr runat="server" id="itemPlaceholder"></tr>
+                        </tbody>
                     </table>
                 </LayoutTemplate>
 
@@ -28,9 +34,9 @@
                 </ItemSeparatorTemplate>
                 <ItemTemplate>
                     <tr>
-                        <td><%# Item.UserName %></td>
-                        <td><%# Item.Roles.Count() == 1 ? "Admin" : "User" %></td>
-                        <td>
+                        <td class="animated fadeInRight"><%# Item.UserName %></td>
+                        <td class="animated fadeInRight"><%# Item.Roles.Count() == 1 ? "Admin" : "User" %></td>
+                        <td class="animated fadeInRight">
                             <asp:Button runat="server" ID="Btn" CssClass="btn btn-info" Text='<%# Item.Roles.Count() == 0 ? "Promote to Admin" : "Demote to User" %>' CommandName="ChangeUserRole" OnCommand="Btn_Command" CommandArgument="<%# Item.Id %>" />
 
                         </td>

@@ -6,7 +6,7 @@
         <div class="container">
             <asp:FormView runat="server" ID="FvEdit" RenderOuterTable="false" ItemType="R2D2.Models.Book" DefaultMode="Edit" SelectMethod="FvEdit_GetItem" UpdateMethod="FvEdit_UpdateItem" DataKeyNames="Id">
                 <EditItemTemplate>
-                    <div class="row">
+                    <div class="row animated fadeIn">
                         <div class="form-group col-md-7">
                             Title:
                             <asp:TextBox CssClass="form-control col-md-7" runat="server" ID="Title" Text="<%#: BindItem.Title %>" />
@@ -43,7 +43,7 @@
                             </asp:CheckBoxList>
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row animated fadeInUp">
                         <asp:Button CssClass="btn btn-primary" Text="Save" CommandName="Update" runat="server" />
                         <asp:Button CssClass="btn btn-danger" Text="Cancel" CommandName="Cancel" runat="server" />
                     </div>

@@ -153,7 +153,7 @@
                 <asp:ContentPlaceHolder ID="MainContent" runat="server">
                 </asp:ContentPlaceHolder>
                 <hr />
-                <footer class="text-center">
+                <footer class="text-center animated fadeIn">
                     <p>
                         &copy; <%: DateTime.Now.Year %> - ASP.NET WebForms Teamwork by <a href="https://github.com/Web-Forms-Team-Vladimir-Nabokov" target="_blank">Team "Vladimir Nabokov"</a> | <a runat="server" href="~/Public/Sitemap.aspx">Sitemap</a>
                     </p>

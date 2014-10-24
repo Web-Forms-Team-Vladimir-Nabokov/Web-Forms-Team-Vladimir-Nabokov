@@ -2,7 +2,7 @@
 <div class="panel-body">
     <asp:GridView ID="GvBestReadings" runat="server"
         ItemType="R2D2.Models.Book"
-        CssClass="table table-striped table-hover table-bordered table-condensed"
+        CssClass="table table-striped table-hover table-bordered table-condensed animated fadeInUp"
         AutoGenerateColumns="false">
         <Columns>
             <asp:TemplateField HeaderText="Language">

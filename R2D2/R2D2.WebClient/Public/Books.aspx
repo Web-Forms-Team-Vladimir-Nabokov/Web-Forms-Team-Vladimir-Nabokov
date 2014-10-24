@@ -3,21 +3,17 @@
 <asp:Content ID="ContentPublicBooks" ContentPlaceHolderID="MainContent" runat="server">
     <div class="row">
         <div class="col-md-3">
-<div class="panel panel-info">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">Select Category: </h3>
                 </div>
-                <div class="panel-body">
-                    <ul class="list-group">
+                <div class="panel-body active">
                     <asp:Repeater ID="RepeaterCategories" runat="server" ItemType="R2D2.Models.Category" SelectMethod="gvListAllCategories_GetData">
                         <ItemTemplate>
-                            <li class="list-group-item">
                             <%--<span class="badge">11</span>--%>
-                                <a runat="server" class="btn btn-info" style="margin: 0px; width: 100%; height: 100%;" href='<%#: "Books.aspx?category="+ Item.Name %>'><%#: Item.Name %></a>
-                            </li>
+                            <a runat="server" class="btn btn-default" style="margin: 0px; width: 100%; height: 100%;" href='<%#: "Books.aspx?category="+ Item.Name %>'><%#: Item.Name %></a>
                         </ItemTemplate>
                     </asp:Repeater>
-                    </ul>
                 </div>
             </div>
         </div>
@@ -43,18 +39,18 @@
                         </div>
                         <div class="col-md-4">
                             <asp:DropDownList runat="server" ID="ddSortCriteria" CssClass="form-control">
-                                <asp:ListItem value="Rating">Rating</asp:ListItem>
-                                <asp:ListItem value="DatePublished">Date Published</asp:ListItem>
+                                <asp:ListItem Value="Rating">Rating</asp:ListItem>
+                                <asp:ListItem Value="DatePublished">Date Published</asp:ListItem>
                             </asp:DropDownList>
                         </div>
                         <div class="col-md-2">
                             <asp:DropDownList runat="server" ID="ddSortDirection" CssClass="form-control">
                                 <asp:ListItem Selected="True" Value="ASC">ASC</asp:ListItem>
-                                <asp:ListItem value="DESC">DESC</asp:ListItem>
+                                <asp:ListItem Value="DESC">DESC</asp:ListItem>
                             </asp:DropDownList>
                         </div>
                         <div class="col-md-2">
-                            <asp:Button id="SortButton" Text="Sort" CssClass="btn btn-primary" OnClick="SortButton_Click" runat="server"/>  
+                            <asp:Button ID="SortButton" Text="Sort" CssClass="btn btn-primary" OnClick="SortButton_Click" runat="server" />
                         </div>
                     </div>
                     <div class="row">
@@ -67,41 +63,42 @@
                             <ItemTemplate>
                                 <div class="col-md-4">
                                     <div class="panel panel-warning">
-                                      <div class="panel-heading">
-                                        <h3 class="panel-title">
-                                            <a runat="server" href='<%#: "~/Public/BookDetails.aspx?bookId=" + Item.Id %>'>
-                                                <%#: Item.Title %>
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">
+                                                <a runat="server" href='<%#: "~/Public/BookDetails.aspx?bookId=" + Item.Id %>'>
+                                                    <%#: Item.Title %>
                                             </a>
-                                        </h3>
-                                      </div>
-                                      <div class="panel-body">
-                                          <img class="book-thumbnail" src="<%# Item.CoverUrl %>" id="coverUrl" runat="server" alt="<%#: Item.Title %>" onerror="this.onload = null; this.src='../Imgs/knowledge.png';" />
-                                        <hr />
-                                        <strong>Author:</strong> <%#: Item.Author %><br />
-                                        <strong>Date:</strong> <%#: Item.DatePublished.ToString("MMMM dd, yyyy") %><br />
-                                        <strong>Rating: </strong><asp:Label runat="server" OnPreRender="Rating_PreRender" Text="<%# Item.Rating %>"></asp:Label>
-                                      </div>
+                                            </h3>
+                                        </div>
+                                        <div class="panel-body">
+                                            <img class="book-thumbnail" src="<%# Item.CoverUrl %>" id="coverUrl" runat="server" alt="<%#: Item.Title %>" onerror="this.onload = null; this.src='../Imgs/knowledge.png';" />
+                                            <hr />
+                                            <strong>Author:</strong> <%#: Item.Author %><br />
+                                            <strong>Date:</strong> <%#: Item.DatePublished.ToString("MMMM dd, yyyy") %><br />
+                                            <strong>Rating: </strong>
+                                            <asp:Label runat="server" OnPreRender="Rating_PreRender" Text="<%# Item.Rating %>"></asp:Label>
+                                        </div>
                                     </div>
                                 </div>
                             </ItemTemplate>
                         </asp:ListView>
                     </div>
                     <div class="row">
-                    <%-- Paging! --%>
-                    <div class="col-md-12">
-                        <asp:DataPager ID="DataPager1" runat="server"
-                            PagedControlID="ListViewBooks" PageSize="3"
-                            QueryStringField="page">
-                            <Fields>
-                                <asp:NextPreviousPagerField ButtonCssClass="btn btn-info" ShowFirstPageButton="true"
-                                    ShowNextPageButton="false" ShowPreviousPageButton="false" />
-                                <asp:NumericPagerField CurrentPageLabelCssClass="btn btn-primary" NumericButtonCssClass="btn btn-info" />
-                                <asp:NextPreviousPagerField ShowLastPageButton="true"
-                                    ShowNextPageButton="false" ShowPreviousPageButton="false" ButtonCssClass="btn btn-info" />
-                            </Fields>
-                        </asp:DataPager>
-                    </div>
-                    <%-- Paging END --%>
+                        <%-- Paging! --%>
+                        <div class="col-md-12">
+                            <asp:DataPager ID="DataPager1" runat="server"
+                                PagedControlID="ListViewBooks" PageSize="3"
+                                QueryStringField="page">
+                                <Fields>
+                                    <asp:NextPreviousPagerField ButtonCssClass="btn btn-info" ShowFirstPageButton="true"
+                                        ShowNextPageButton="false" ShowPreviousPageButton="false" />
+                                    <asp:NumericPagerField CurrentPageLabelCssClass="btn btn-primary" NumericButtonCssClass="btn btn-info" />
+                                    <asp:NextPreviousPagerField ShowLastPageButton="true"
+                                        ShowNextPageButton="false" ShowPreviousPageButton="false" ButtonCssClass="btn btn-info" />
+                                </Fields>
+                            </asp:DataPager>
+                        </div>
+                        <%-- Paging END --%>
                     </div>
                 </div>
             </div>

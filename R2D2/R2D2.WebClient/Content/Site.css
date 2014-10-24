@@ -46,14 +46,14 @@
     margin-bottom: 0 !important;
 }
 
-.book-info:hover {
-    background-color: #4582ec;
-}
+    .book-info:hover {
+        background-color: #4582ec;
+    }
 
-.book-info > a:hover {
-    color: #fff;
-    text-decoration: none;
-}
+    .book-info > a:hover {
+        color: #fff;
+        text-decoration: none;
+    }
 
 .img-wrapper {
     width: 80px;
@@ -89,15 +89,19 @@
     margin: 0 5px;
 }
 
-.chl-box{
+.chl-box {
     margin-top: 15px;
     margin-bottom: 30px;
 }
 
-.chl-box input {
-    margin: 0 15px;
-}
+    .chl-box input {
+        margin: 0 15px;
+    }
 
-.chl-box label {
-    margin-right: 30px;
+    .chl-box label {
+        margin-right: 30px;
+    }
+
+.panel-body.active {
+    background: #F5F5F5;
 }

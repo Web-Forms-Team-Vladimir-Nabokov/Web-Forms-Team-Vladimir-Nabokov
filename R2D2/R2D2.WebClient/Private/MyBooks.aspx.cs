@@ -105,7 +105,6 @@
             var currentChapterId = userBook.CurrentChapterId;
             var currentChapterSource = userBook.CurrentChapterSource;
 
-            var linkBtn = sender as LinkButton;
             var link = "~/Private/ReadBook.aspx?bookId=" + bookIdAsStr;
             if (!string.IsNullOrWhiteSpace(currentChapterId) && !string.IsNullOrWhiteSpace(currentChapterSource))
             {

@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="BookInfo.ascx.cs" Inherits="R2D2.WebClient.Controls.BookInfo" %>
 <div class="panel panel-warning">
     <div class="panel-heading">
-        <h3 runat="server" id="bookTitle" cssclass="panel-title">
+        <h3 runat="server" id="bookTitle" class="panel-title">
             <%#: this.Title %>
         </h3>
     </div>

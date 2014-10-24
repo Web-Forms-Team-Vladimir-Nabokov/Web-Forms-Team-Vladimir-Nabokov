@@ -5,7 +5,7 @@
 
     <div class="container">
         <div class="form-group col-lg-6">
-            <asp:TextBox CssClass="form-control" runat="server" ID="TbSearch" OnTextChanged="TbSearch_TextChanged" TextMode="Search" AutoPostBack="true"></asp:TextBox>
+            <asp:TextBox CssClass="form-control" runat="server" ID="TbSearch" OnTextChanged="TbSearch_TextChanged" TextMode="Search" AutoPostBack="true" placeholder="Search users..."></asp:TextBox>
         </div>
         <div class="form-group col-lg-12">
             <asp:ListView runat="server" ID="LvUsers" ItemType="R2D2.Models.ApplicationUser" SelectMethod="LvUsers_GetData">

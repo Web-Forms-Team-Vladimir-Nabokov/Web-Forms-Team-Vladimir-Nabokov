@@ -9,27 +9,27 @@
                     <div class="row animated fadeIn">
                         <div class="form-group col-md-7">
                             Title:
-                            <asp:TextBox CssClass="form-control col-md-7" runat="server" ID="Title" Text="<%#: BindItem.Title %>" />
+                            <asp:TextBox CssClass="form-control col-md-7" runat="server" ID="Title" Text="<%# BindItem.Title %>" />
                         </div>
                         <div class="form-group col-md-7">
                             Author:
-                            <asp:TextBox CssClass="form-control col-md-7" runat="server" ID="Author" Text="<%#: BindItem.Author %>" />
+                            <asp:TextBox CssClass="form-control col-md-7" runat="server" ID="Author" Text="<%# BindItem.Author %>" />
                         </div>
                         <div class="form-group col-md-7">
                             Cover URL:
-                            <asp:TextBox CssClass="form-control col-md-7" runat="server" ID="BookUrl" Text="<%#: BindItem.CoverUrl %>" />
+                            <asp:TextBox CssClass="form-control col-md-7" runat="server" ID="BookUrl" Text="<%# BindItem.CoverUrl %>" />
                         </div>
                         <div class="form-group col-md-7">
                             DatePublished:
-                            <asp:TextBox CssClass="form-control col-md-7" runat="server" ID="DatePublished" Text="<%#: BindItem.DatePublished %>" />
+                            <asp:TextBox CssClass="form-control col-md-7" runat="server" ID="DatePublished" Text="<%# BindItem.DatePublished %>" />
                         </div>
                         <div class="form-group col-md-7">
                             Description:
-                            <asp:TextBox CssClass="form-control col-md-7" Rows="7" runat="server" ID="Description" TextMode="MultiLine" Text="<%#: BindItem.Description %>" />
+                            <asp:TextBox CssClass="form-control col-md-7" Rows="7" runat="server" ID="Description" TextMode="MultiLine" Text="<%# BindItem.Description %>" />
                         </div>
                         <div class="form-group col-md-7">
                             Language:
-                            <asp:TextBox CssClass="form-control col-md-7" runat="server" ID="Language" Text="<%#: BindItem.Language %>" />
+                            <asp:TextBox CssClass="form-control col-md-7" runat="server" ID="Language" Text="<%# BindItem.Language %>" />
                         </div>
                         <div class="form-group col-md-10">
                             <span>Choose book's category: </span>

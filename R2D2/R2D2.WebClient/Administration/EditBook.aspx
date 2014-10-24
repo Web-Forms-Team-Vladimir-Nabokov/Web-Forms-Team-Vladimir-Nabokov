@@ -45,7 +45,7 @@
                     </div>
                     <div class="form-group row animated fadeInUp">
                         <asp:Button CssClass="btn btn-primary" Text="Save" CommandName="Update" runat="server" />
-                        <asp:Button CssClass="btn btn-danger" Text="Cancel" CommandName="Cancel" runat="server" />
+                        <asp:Button CssClass="btn btn-danger" Text="Cancel" OnClick="Cancel_Click" runat="server" />
                     </div>
                 </EditItemTemplate>
             </asp:FormView>

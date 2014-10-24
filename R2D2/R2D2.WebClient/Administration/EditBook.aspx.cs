@@ -108,5 +108,10 @@ namespace R2D2.WebClient.Administration
                 }
             }
         }
+
+        protected void Cancel_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Administration/EditBook.aspx?id=" + Request.QueryString["id"]);
+        }
     }
 }
